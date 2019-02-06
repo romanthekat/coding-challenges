@@ -1,3 +1,3 @@
 # LeetCode
-## TwoSum
+## TwoSums
 https://leetcode.com/problems/two-sum/
