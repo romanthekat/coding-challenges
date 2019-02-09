@@ -13,14 +13,11 @@ import java.util.Arrays;
  * <p>
  * Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
  */
-class TwoSums {
+class TwoSums extends Solution {
     public static void main(String[] args) {
         TwoSums twoSums = new TwoSums();
 
-        int[] result = twoSums.twoSum(new int[]{2, 7, 11, 15}, 9);
-        System.out.println(Arrays.toString(result));
-
-        System.out.println(Arrays.equals(result, new int[]{0, 1}));
+        validateEqual(twoSums.twoSum(new int[]{2, 7, 11, 15}, 9), new int[]{0, 1});
     }
 
     public int[] twoSum(int[] nums, int target) {
