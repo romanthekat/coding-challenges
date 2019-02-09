@@ -31,10 +31,9 @@ public class LongestSubstring extends Solution {
         int longestSubstringSize = 0;
 
         int length = string.length();
+        Set<Character> characters = new HashSet<>();
 
         for (int startPos = 0; startPos < length; startPos++) {
-            Set<Character> characters = new HashSet<>(); //TODO optimize size or use array, info about input required
-
             int currentSubstringLen = 0;
             for (int checkCharPos = startPos; checkCharPos < length; checkCharPos++) {
                 char checkChar = string.charAt(checkCharPos);
@@ -50,6 +49,8 @@ public class LongestSubstring extends Solution {
             if (currentSubstringLen > longestSubstringSize) {
                 longestSubstringSize = currentSubstringLen;
             }
+
+            characters.clear();
         }
 
         return longestSubstringSize;
