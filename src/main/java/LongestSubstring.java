@@ -24,6 +24,7 @@ public class LongestSubstring extends Solution {
         validateEqual(longestSubstring.lengthOfLongestSubstring("abcabcbb"), 3);
         validateEqual(longestSubstring.lengthOfLongestSubstring("bbbbb"), 1);
         validateEqual(longestSubstring.lengthOfLongestSubstring("pwwkew"), 3);
+        validateEqual(longestSubstring.lengthOfLongestSubstring(" "), 1);
     }
 
     public int lengthOfLongestSubstring(String string) {
@@ -31,23 +32,23 @@ public class LongestSubstring extends Solution {
 
         int length = string.length();
 
-        for (int startPos = 0; startPos < length - 1; startPos++) {
+        for (int startPos = 0; startPos < length; startPos++) {
             Set<Character> characters = new HashSet<>(); //TODO optimize size or use array, info about input required
 
-            int currentSubstringLen;
+            int currentSubstringLen = 0;
             for (int checkCharPos = startPos; checkCharPos < length; checkCharPos++) {
                 char checkChar = string.charAt(checkCharPos);
 
                 if (!characters.contains(checkChar)) {
                     characters.add(checkChar);
+                    currentSubstringLen = checkCharPos - startPos + 1;
                 } else {
-                    currentSubstringLen = checkCharPos - startPos;
-
-                    if (currentSubstringLen > longestSubstringSize) {
-                        longestSubstringSize = currentSubstringLen;
-                    }
                     break;
                 }
+            }
+
+            if (currentSubstringLen > longestSubstringSize) {
+                longestSubstringSize = currentSubstringLen;
             }
         }
 
