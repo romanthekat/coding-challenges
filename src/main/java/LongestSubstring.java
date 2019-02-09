@@ -21,6 +21,7 @@ public class LongestSubstring extends Solution {
     public static void main(String[] args) {
         LongestSubstring longestSubstring = new LongestSubstring();
 
+        // space - 32. a - 97
         validateEqual(longestSubstring.lengthOfLongestSubstring("abcabcbb"), 3);
         validateEqual(longestSubstring.lengthOfLongestSubstring("bbbbb"), 1);
         validateEqual(longestSubstring.lengthOfLongestSubstring("pwwkew"), 3);
@@ -31,7 +32,9 @@ public class LongestSubstring extends Solution {
         int longestSubstringSize = 0;
 
         int length = string.length();
-        Set<Character> characters = new HashSet<>();
+        int differentCharsCount = 27; //26 low case + space
+
+        Set<Character> characters = new HashSet<>(differentCharsCount); //TODO use more efficient cache
 
         for (int startPos = 0; startPos < length; startPos++) {
             int currentSubstringLen = 0;
