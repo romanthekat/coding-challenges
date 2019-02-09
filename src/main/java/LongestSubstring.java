@@ -32,7 +32,7 @@ public class LongestSubstring extends Solution {
         int length = string.length();
 
         for (int startPos = 0; startPos < length - 1; startPos++) {
-            Set<Character> characters = new HashSet<>(); //TODO optimize size
+            Set<Character> characters = new HashSet<>(); //TODO optimize size or use array, info about input required
 
             int currentSubstringLen = 0;
             for (int checkCharPos = startPos; checkCharPos < length; checkCharPos++) {
