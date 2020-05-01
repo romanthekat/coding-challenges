@@ -18,24 +18,18 @@ func firstBadVersion(n int) int {
 	highVersion := n
 
 	for lowVersion < highVersion {
-		if (highVersion - lowVersion) <= 1 {
-			if isBadVersion(lowVersion) {
-				return lowVersion
-			} else {
-				return highVersion
-			}
-		}
-
-		versionToCheck := (lowVersion + highVersion) / 2
+		versionToCheck := (lowVersion + highVersion) / 2 //low + (high-low) / 2
 
 		if isBadVersion(versionToCheck) {
 			highVersion = versionToCheck
 		} else {
-			lowVersion = versionToCheck
+			lowVersion = versionToCheck + 1
 		}
 	}
+
+	return lowVersion
 }
 
 func isBadVersion(version int) bool {
-	return version >= 4
+	return version >= 3
 }
