@@ -13,7 +13,7 @@ func numJewelsInStones(J string, S string) int {
 	result := 0
 
 	for _, stone := range []rune(S) {
-		if jewels[stone] {
+		if _, ok := jewels[stone]; ok {
 			result++
 		}
 	}
