@@ -17,7 +17,7 @@ func canConstruct(ransomNote string, magazine string) bool {
 		return false
 	}
 
-	letters := make(map[rune]int) //can be optimized with array of 26 letters
+	letters := make(map[rune]int) //can be optimized with array of 26 letters; also byte is acceptable here
 	for _, letter := range []rune(magazine) {
 		letters[letter]++
 	}
