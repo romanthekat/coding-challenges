@@ -15,7 +15,7 @@ func assert(got, want bool) {
 func canConstruct(ransomNote string, magazine string) bool {
 	letters := make(map[rune]int) //can be optimized with array of 26 letters
 	for _, letter := range []rune(magazine) {
-		if _, ok := letters[letter]; ok {
+		if letters[letter] > 0 {
 			letters[letter]++
 		} else {
 			letters[letter] = 1
@@ -23,7 +23,7 @@ func canConstruct(ransomNote string, magazine string) bool {
 	}
 
 	for _, ransomLetter := range []rune(ransomNote) {
-		if amount, ok := letters[ransomLetter]; ok && amount > 0 {
+		if letters[ransomLetter] > 0 {
 			letters[ransomLetter]--
 		} else {
 			return false
