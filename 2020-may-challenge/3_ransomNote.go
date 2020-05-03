@@ -13,13 +13,13 @@ func assert(got, want bool) {
 }
 
 func canConstruct(ransomNote string, magazine string) bool {
+	if len(ransomNote) > len(magazine) {
+		return false
+	}
+
 	letters := make(map[rune]int) //can be optimized with array of 26 letters
 	for _, letter := range []rune(magazine) {
-		if letters[letter] > 0 {
-			letters[letter]++
-		} else {
-			letters[letter] = 1
-		}
+		letters[letter]++
 	}
 
 	for _, ransomLetter := range []rune(ransomNote) {
