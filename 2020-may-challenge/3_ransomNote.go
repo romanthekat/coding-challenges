@@ -8,7 +8,7 @@ func main() {
 	assert(canConstruct("aa", "aab"), true)
 }
 
-func assert(got, want bool) {
+func assert(got, want interface{}) {
 	fmt.Printf("got: %t, want: %t\n", got, want)
 }
 
