@@ -14,7 +14,7 @@ func assert(got, want interface{}) {
 	fmt.Printf("got: %t, want: %t\n", got, want)
 }
 
-func findComplement(num int) int {
+func findComplement(num int) int { //alternatively: number bitwise not and ones mask of num bits length
 	closestPowerOf2 := 1
 	for i := 1; i <= num; i = i << 1 {
 		closestPowerOf2 = i

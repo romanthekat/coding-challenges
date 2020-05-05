@@ -13,7 +13,7 @@ func assert(got, want interface{}) {
 }
 
 func firstUniqChar(s string) int {
-	chars := make(map[rune]int)
+	chars := make(map[rune]int) //alternatively: array of 26 chars, as usual :)
 
 	for _, r := range s {
 		chars[r]++
