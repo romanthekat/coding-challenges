@@ -37,9 +37,14 @@ func longestPalindrome(s string) string {
 	topPalindrome := ""
 
 	for i := 0; i < len(s); i++ {
-		for j := i + 1; j <= len(s); j++ {
-			if isPalindrome(s[i:j]) && (j-i) > topLength {
-				topLength = j - i
+		for j := len(s); j >= i+1; j-- {
+			possibleLength := j - i
+			if possibleLength < topLength {
+				break
+			}
+
+			if isPalindrome(s[i:j]) && possibleLength > topLength {
+				topLength = possibleLength
 				topPalindrome = s[i:j]
 			}
 		}
