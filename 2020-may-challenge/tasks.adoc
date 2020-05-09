@@ -201,3 +201,23 @@ Constraints:
 * coordinates[i].length == 2
 * -10^4 <= coordinates[i][0], coordinates[i][1] <= 10^4
 * coordinates contains no duplicate point.
+
+
+== day 9: Valid perfect square
+Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+Note: Do not use any built-in library function such as sqrt.
+
+Example 1:
+
+[source]
+[source]
+-----
+Input: 16
+Output: true
+-----
+Example 2:
+```
+Input: 14
+Output: false
+```
