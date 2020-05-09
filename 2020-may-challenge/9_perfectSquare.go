@@ -30,9 +30,7 @@ func isPerfectSquare(num int) bool {
 		}
 	}
 
-	if isSquare(num, min) {
-		return true
-	} else if isSquare(num, max) {
+	if isSquare(num, min) || isSquare(num, max) {
 		return true
 	} else {
 		return false
