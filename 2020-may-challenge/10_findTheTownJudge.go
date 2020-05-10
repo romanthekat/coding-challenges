@@ -16,19 +16,19 @@ func assert(got, want interface{}) {
 }
 
 func findJudge(N int, trust [][]int) int {
-	trustedBy := make([][]int, N) //alternatively: keep just count, not values
-	trustsTo := make([][]int, N)
+	trustedBy := make([]int, N)
+	trustsTo := make([]int, N)
 
 	for _, trustEntry := range trust {
 		who := trustEntry[0] - 1
 		to := trustEntry[1] - 1
 
-		trustedBy[to] = append(trustedBy[to], who)
-		trustsTo[who] = append(trustedBy[who], to)
+		trustedBy[to]++
+		trustsTo[who]++
 	}
 
-	for who, trustedByList := range trustedBy {
-		if len(trustedByList) == N-1 && len(trustsTo[who]) == 0 {
+	for who, trustedByCount := range trustedBy {
+		if trustedByCount == N-1 && trustsTo[who] == 0 {
 			return who + 1
 		}
 	}
