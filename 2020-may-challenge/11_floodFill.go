@@ -29,32 +29,26 @@ func assert(got, want interface{}) {
 }
 
 func floodFill(image [][]int, sr int, sc int, newColor int) [][]int {
-	return floodFillRecursive(image, sr, sc, image[sr][sc], newColor, initCheckedMap(image))
+	if image[sr][sc] == newColor {
+		return image
+	}
+
+	return floodFillRecursive(image, sr, sc, image[sr][sc], newColor)
 }
 
-func floodFillRecursive(image [][]int, sr int, sc int, origColor, newColor int, checkedMap [][]bool) [][]int {
-	if !isCorrectCoordinate(image, sr, sc) || image[sr][sc] != origColor || checkedMap[sr][sc] {
+func floodFillRecursive(image [][]int, sr int, sc int, origColor, newColor int) [][]int {
+	if !isCorrectCoordinate(image, sr, sc) || image[sr][sc] != origColor {
 		return image
 	}
 
 	image[sr][sc] = newColor
-	checkedMap[sr][sc] = true
 
-	floodFillRecursive(image, sr+1, sc, origColor, newColor, checkedMap)
-	floodFillRecursive(image, sr-1, sc, origColor, newColor, checkedMap)
-	floodFillRecursive(image, sr, sc+1, origColor, newColor, checkedMap)
-	return floodFillRecursive(image, sr, sc-1, origColor, newColor, checkedMap)
+	floodFillRecursive(image, sr+1, sc, origColor, newColor)
+	floodFillRecursive(image, sr-1, sc, origColor, newColor)
+	floodFillRecursive(image, sr, sc+1, origColor, newColor)
+	return floodFillRecursive(image, sr, sc-1, origColor, newColor)
 }
 
 func isCorrectCoordinate(image [][]int, sr int, sc int) bool {
 	return sr >= 0 && sr < len(image) && sc >= 0 && sc < len(image[0])
-}
-
-func initCheckedMap(image [][]int) [][]bool {
-	checkedMap := make([][]bool, len(image))
-	for i, row := range image {
-		checkedMap[i] = make([]bool, len(row))
-	}
-
-	return checkedMap
 }
