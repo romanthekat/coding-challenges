@@ -313,3 +313,25 @@ Note:
 * The length of image and image[0] will be in the range [1, 50].
 * The given starting pixel will satisfy 0 <= sr < image.length and 0 <= sc < image[0].length.
 * The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
+
+
+== day 12: Single element in a sorted array
+You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Find this single element that appears only once.
+
+Example 1:
+
+[source]
+----
+Input: [1,1,2,3,3,4,4,8,8]
+Output: 2
+----
+Example 2:
+
+[source]
+----
+Input: [3,3,7,7,10,11,11]
+Output: 10
+----
+
+
+Note: Your solution should run in O(log n) time and O(1) space.
