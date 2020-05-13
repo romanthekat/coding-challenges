@@ -31,9 +31,9 @@ func removeKdigits(num string, k int) string {
 	}
 
 	startRange := 0
-	for i, num := range runes {
+	for _, num := range runes {
 		if num == '0' {
-			startRange = i + 1
+			startRange++
 		} else {
 			break
 		}
