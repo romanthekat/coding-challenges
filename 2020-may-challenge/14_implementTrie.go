@@ -17,7 +17,7 @@ func main() {
 }
 
 func assert(got, want interface{}) {
-	fmt.Printf("%t|got: %t, want: %t\n", got == want, got, want)
+	fmt.Printf("%v|got: %v, want: %v\n", got == want, got, want)
 }
 
 type Trie struct {
