@@ -8,7 +8,7 @@ func main() {
 	assert(oddEvenList(newList([]int{1, 2, 3, 4, 5})), newList([]int{1, 3, 5, 2, 4}))
 	assert(oddEvenList(newList([]int{2, 1, 3, 5, 6, 4, 7})), newList([]int{2, 3, 6, 7, 1, 5, 4}))
 	assert(oddEvenList(newList([]int{42})), newList([]int{42}))
-	assert(oddEvenList(newList([]int{})), newList([]int{}))
+	assert(oddEvenList(nil), nil)
 }
 
 func newList(values []int) *ListNode {
@@ -41,38 +41,22 @@ func (l ListNode) String() string {
 }
 
 func oddEvenList(head *ListNode) *ListNode {
-	if head == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 
-	oddNode := head
-	evenNode := head.Next
+	oddNode, evenNode := head, head.Next
 	firstEvenNode := evenNode
 
-	currNode := head
+	for oddNode.Next != nil && evenNode.Next != nil {
+		oddNode.Next = oddNode.Next.Next
+		evenNode.Next = evenNode.Next.Next
 
-	isOdd := true
-	nodesChecked := 0
-	for currNode != nil {
-		if nodesChecked >= 2 {
-			if isOdd {
-				oddNode.Next = currNode
-				oddNode = currNode
-			} else {
-				evenNode.Next = currNode
-				evenNode = currNode
-			}
-		}
-
-		isOdd = !isOdd
-		nodesChecked++
-		currNode = currNode.Next
+		oddNode = oddNode.Next
+		evenNode = evenNode.Next
 	}
 
 	oddNode.Next = firstEvenNode
-	if evenNode != nil {
-		evenNode.Next = nil
-	}
 
 	return head
 }
