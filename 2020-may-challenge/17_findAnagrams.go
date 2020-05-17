@@ -17,7 +17,7 @@ func assert(got, want interface{}) {
 func findAnagrams(s string, p string) []int {
 	var result []int
 
-	targetWordMap := getWordMap(p)
+	targetWordMap := getWordMap(p) //alternatively: use int array instead, as usual ^_^
 
 	for i := 0; i <= len(s)-len(p); i++ {
 		checkWordMap := getWordMap(s[i : i+len(p)])
