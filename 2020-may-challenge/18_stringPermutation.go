@@ -15,22 +15,24 @@ func assert(got, want interface{}) {
 }
 
 func checkInclusion(s1 string, s2 string) bool {
-	targetMap := getWordMap(s1)
-	for i := 0; i <= len(s2)-len(s1); i++ {
-		checkMap := getWordMap(s2[i : i+len(s1)])
-		if reflect.DeepEqual(targetMap, checkMap) {
+	targetArray := make([]int, 26)
+	currentArray := make([]int, 26)
+
+	for i := range s1 {
+		targetArray[s1[i]-'a']++
+	}
+
+	for i := range s2 {
+		if i >= len(s1) {
+			currentArray[s2[i-len(s1)]-'a']--
+		}
+
+		currentArray[s2[i]-'a']++
+
+		if reflect.DeepEqual(targetArray, currentArray) { //alternatively: manually check it's equality
 			return true
 		}
 	}
 
 	return false
-}
-
-func getWordMap(word string) map[rune]int {
-	result := make(map[rune]int)
-	for _, char := range word {
-		result[char]++
-	}
-
-	return result
 }
