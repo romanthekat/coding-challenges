@@ -11,6 +11,10 @@ func main() {
 	assert(oddEvenList(nil), nil)
 }
 
+func assert(got, want interface{}) {
+	fmt.Printf("%v|got: %v, want: %v\n", got == want, got, want)
+}
+
 func newList(values []int) *ListNode {
 	head := &ListNode{Val: values[0]}
 	currNode := head
@@ -25,10 +29,6 @@ func newList(values []int) *ListNode {
 	}
 
 	return head
-}
-
-func assert(got, want interface{}) {
-	fmt.Printf("%v|got: %v, want: %v\n", got == want, got, want)
 }
 
 type ListNode struct {
