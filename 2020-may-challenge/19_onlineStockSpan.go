@@ -23,7 +23,7 @@ type Entry struct {
 }
 
 type StockSpanner struct {
-	entries []Entry
+	stack []*Entry
 }
 
 func Constructor() StockSpanner {
@@ -34,15 +34,15 @@ func Constructor() StockSpanner {
 func (s *StockSpanner) Next(price int) int {
 	span := 1
 
-	for len(s.entries) > 0 && price >= s.entries[len(s.entries)-1].price {
-		lastIndex := len(s.entries) - 1
+	for len(s.stack) > 0 && price >= s.stack[len(s.stack)-1].price {
+		lastIndex := len(s.stack) - 1
 
-		entry := s.entries[lastIndex]
-		span += entry.span
-		s.entries = s.entries[:lastIndex]
+		top := s.stack[lastIndex]
+		span += top.span
+		s.stack = s.stack[:lastIndex]
 	}
 
-	s.entries = append(s.entries, Entry{
+	s.stack = append(s.stack, &Entry{
 		price: price,
 		span:  span,
 	})
