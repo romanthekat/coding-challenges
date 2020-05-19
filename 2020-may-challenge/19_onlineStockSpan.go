@@ -17,18 +17,9 @@ func assert(got, want interface{}) {
 	fmt.Printf("%v|got: %v, want: %v\n", got == want, got, want)
 }
 
-const (
-	up = iota
-	down
-	same
-)
-
-type Trend int
-
 type Entry struct {
-	price      int
-	trend      Trend
-	startIndex int
+	price int
+	span  int
 }
 
 type StockSpanner struct {
@@ -39,55 +30,22 @@ func Constructor() StockSpanner {
 	return StockSpanner{}
 }
 
+//lack of stack oob is great
 func (s *StockSpanner) Next(price int) int {
-	if len(s.entries) == 0 {
-		s.entries = append(s.entries, Entry{
-			price:      price,
-			trend:      same,
-			startIndex: 0,
-		})
-		return 1
+	span := 1
+
+	for len(s.entries) > 0 && price >= s.entries[len(s.entries)-1].price {
+		lastIndex := len(s.entries) - 1
+
+		entry := s.entries[lastIndex]
+		span += entry.span
+		s.entries = s.entries[:lastIndex]
 	}
 
-	prevEntry := s.entries[len(s.entries)-1]
+	s.entries = append(s.entries, Entry{
+		price: price,
+		span:  span,
+	})
 
-	prevTrend := prevEntry.trend
-
-	if (prevTrend == up && prevEntry.price < price) ||
-		(prevTrend == down && prevEntry.price > price) ||
-		(prevTrend == same && prevEntry.price == price) {
-		s.entries = append(s.entries, Entry{
-			price:      price,
-			trend:      prevTrend,
-			startIndex: prevEntry.startIndex,
-		})
-	} else {
-		var trend Trend = same
-		if prevEntry.price > price {
-			trend = down
-		} else if prevEntry.price < price {
-			trend = up
-		}
-
-		s.entries = append(s.entries, Entry{
-			price:      price,
-			trend:      trend,
-			startIndex: len(s.entries) - 1,
-		})
-	}
-
-	return getSpan(s, len(s.entries)-1)
-}
-
-func getSpan(s *StockSpanner, index int) int {
-	entry := s.entries[index]
-	if entry.startIndex == index {
-		return 1
-	}
-
-	if entry.trend == same || entry.trend == up {
-		return index - entry.startIndex + 1
-	}
-
-	return 1
+	return span
 }
