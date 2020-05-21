@@ -23,14 +23,19 @@ func assert(got, want interface{}) {
 }
 
 func countSquares(matrix [][]int) int {
-	maxSide := getMaxSide(matrix)
-
 	result := 0
-	for side := 1; side <= maxSide; side++ {
-		for y := 0; y <= len(matrix)-side; y++ {
-			for x := 0; x <= len(matrix[0])-side; x++ {
-				if isSquareSubmatrix(matrix, x, y, side) {
+
+	rows := len(matrix)
+	columns := len(matrix[0])
+
+	for row := 0; row < rows; row++ {
+		for column := 0; column < columns; column++ {
+			if matrix[row][column] == 1 {
+				if row == 0 || column == 0 {
 					result++
+				} else {
+					matrix[row][column] += min3(matrix[row-1][column-1], matrix[row-1][column], matrix[row][column-1])
+					result += matrix[row][column]
 				}
 			}
 		}
@@ -39,29 +44,14 @@ func countSquares(matrix [][]int) int {
 	return result
 }
 
-func isSquareSubmatrix(matrix [][]int, startX int, startY int, side int) bool {
-	if (startX+side > len(matrix[0])) || (startY+side > len(matrix)) {
-		return false
-	}
-
-	for x := startX; x < startX+side; x++ {
-		for y := startY; y < startY+side; y++ {
-			if matrix[y][x] != 1 {
-				return false
-			}
-		}
-	}
-
-	return true
+func min3(i, j, k int) int {
+	return min(min(i, j), k)
 }
 
-func getMaxSide(matrix [][]int) int {
-	rows := len(matrix)
-	columns := len(matrix[0])
-
-	if rows < columns {
-		return rows
+func min(i, j int) int {
+	if i <= j {
+		return i
 	} else {
-		return columns
+		return j
 	}
 }
