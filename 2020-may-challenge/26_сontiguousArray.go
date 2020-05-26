@@ -7,10 +7,11 @@ import (
 
 func main() {
 	assert(findMaxLength([]int{0, 1}), 2)
+	assert(findMaxLength([]int{1, 0}), 2)
 	assert(findMaxLength([]int{0, 1, 0}), 2)
 	assert(findMaxLength([]int{0, 1, 0, 1, 0, 0}), 4)
 	assert(findMaxLength([]int{0, 0, 1, 0, 0, 0, 1, 1}), 6)
-	//assert(findMaxLength([]int{1,1,1,1,1,1,1,0,0,0,0,1,1,0,1,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,0,0,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,0,0,1,1,0,1,0,0,1,1,1,0,0,1,0,1,1,1,0,0,1,0,1,1}), -1)
+	assert(findMaxLength([]int{1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1}), 94)
 }
 
 func assert(got, want interface{}) {
@@ -18,39 +19,25 @@ func assert(got, want interface{}) {
 }
 
 func findMaxLength(nums []int) int {
-	return findMaxLengthRecursive(nums, 0, len(nums), 0)
-}
+	count := 0
+	maxLength := 0
+	memo := map[int]int{0: -1}
 
-func findMaxLengthRecursive(nums []int, from, to int, currMax int) int {
-	if from < 0 || from > to {
-		return currMax
-	}
-
-	if isContiguousArray(nums[from:to]) {
-		if len(nums[from:to]) < currMax {
-			return currMax
-		} else {
-			currMax = len(nums[from:to])
-		}
-	}
-
-	return max(findMaxLengthRecursive(nums, from+1, to, currMax), findMaxLengthRecursive(nums, from, to-1, currMax))
-}
-
-func isContiguousArray(nums []int) bool {
-	zeroes := 0
-	ones := 0
-
-	for _, value := range nums {
+	for index, value := range nums {
 		if value == 0 {
-			zeroes++
+			count--
+		} else {
+			count++
 		}
-		if value == 1 {
-			ones++
+
+		if memoValue, ok := memo[count]; ok {
+			maxLength = max(maxLength, index-memoValue)
+		} else {
+			memo[count] = index
 		}
 	}
 
-	return zeroes == ones
+	return maxLength
 }
 
 func max(i, j int) int {
