@@ -9,6 +9,8 @@ func main() {
 	assert(findMaxLength([]int{0, 1}), 2)
 	assert(findMaxLength([]int{0, 1, 0}), 2)
 	assert(findMaxLength([]int{0, 1, 0, 1, 0, 0}), 4)
+	assert(findMaxLength([]int{0, 0, 1, 0, 0, 0, 1, 1}), 6)
+	//assert(findMaxLength([]int{1,1,1,1,1,1,1,0,0,0,0,1,1,0,1,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,0,0,1,1,1,1,1,0,0,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,0,0,1,1,0,1,0,0,1,1,1,0,0,1,0,1,1,1,0,0,1,0,1,1}), -1)
 }
 
 func assert(got, want interface{}) {
@@ -32,7 +34,7 @@ func findMaxLengthRecursive(nums []int, from, to int, currMax int) int {
 		}
 	}
 
-	return max(findMaxLengthRecursive(nums, from-1, to, currMax), findMaxLengthRecursive(nums, from, to-1, currMax))
+	return max(findMaxLengthRecursive(nums, from+1, to, currMax), findMaxLengthRecursive(nums, from, to-1, currMax))
 }
 
 func isContiguousArray(nums []int) bool {
