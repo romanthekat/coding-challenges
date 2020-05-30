@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"sort"
 )
 
 func main() {
@@ -16,25 +17,12 @@ func assert(got, want interface{}) {
 }
 
 func kClosest(points [][]int, K int) [][]int {
-	var result [][]int
+	sort.Slice(points, func(i int, j int) bool {
+		return getDist(points[i]) < getDist(points[j])
+	})
+	return points[:K]
+}
 
-	for _, point := range points {
-		dist := point[0]*point[0] + point[1]*point[1]
-		index := 0
-		for _, top := range result {
-			if dist < top[0]*top[0]+top[1]*top[1] {
-				break
-			}
-			index++
-		}
-
-		result = append(result, []int{})
-		copy(result[index+1:], result[index:])
-		result[index] = []int{point[0], point[1]}
-	}
-
-	if len(result) > K {
-		return result[:K]
-	}
-	return result
+func getDist(point []int) int {
+	return point[0]*point[0] + point[1]*point[1] //no reasons for extra sqrt
 }
