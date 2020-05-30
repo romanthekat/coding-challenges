@@ -16,6 +16,8 @@ func assert(got, want interface{}) {
 	fmt.Printf("%v|got: %v, want: %v\n", reflect.DeepEqual(got, want), got, want)
 }
 
+//alternatively: keep top element and skip if K already reached and element is bigger than top, works on the flight
+//also: 'quick select' for better performance
 func kClosest(points [][]int, K int) [][]int {
 	sort.Slice(points, func(i int, j int) bool {
 		return getDist(points[i]) < getDist(points[j])
