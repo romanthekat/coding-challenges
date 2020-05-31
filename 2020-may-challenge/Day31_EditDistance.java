@@ -8,7 +8,7 @@ class Day31_EditDistance {
     public static void main(String[] args) {
         test(new Solution().minDistance("horse", "ros"), 3);
         test(new Solution().minDistance("intention", "execution"), 5);
-        test(new Solution().minDistance("dinitrophenylhydrazine", "acetylphenylhydrazine"), 5);
+        test(new Solution().minDistance("dinitrophenylhydrazine", "acetylphenylhydrazine"), 6);
     }
 
     protected static void test(Object got, Object want) {
@@ -17,6 +17,37 @@ class Day31_EditDistance {
 }
 
 class Solution {
+    public int minDistance(String from, String to) {
+        var m = from.length();
+        var n = to.length();
+        var table = new int[m + 1][n + 1];
+
+        for (int i = 0; i < m + 1; i++) {
+            table[i][0] = i;
+        }
+        for (int i = 0; i < n + 1; i++) {
+            table[0][i] = i;
+        }
+
+        for (int i = 1; i < m + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                if (from.charAt(i - 1) == to.charAt(j - 1)) {
+                    table[i][j] = table[i - 1][j - 1];
+                } else {
+                    table[i][j] = 1 + min3(table[i - 1][j], table[i][j - 1], table[i - 1][j - 1]);
+                }
+            }
+        }
+
+        return table[m][n];
+    }
+
+    int min3(int i, int j, int k) {
+        return Math.min(i, Math.min(j, k));
+    }
+}
+
+class SolutionRecursiveCache {
     public int minDistance(String from, String to) {
         return minDistance(from, to, 0, 0, new HashMap<>());
     }
