@@ -77,7 +77,6 @@ class SolutionRecursiveCache {
             }
 
             cache.put(state, answer);
-            System.out.println("cache updated");
         }
 
         return cache.get(state);
