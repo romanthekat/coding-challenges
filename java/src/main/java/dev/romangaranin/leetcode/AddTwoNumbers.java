@@ -1,3 +1,5 @@
+package dev.romangaranin.leetcode;
+
 import java.util.Arrays;
 import java.util.List;
 

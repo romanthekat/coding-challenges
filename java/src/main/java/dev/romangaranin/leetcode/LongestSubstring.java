@@ -1,4 +1,9 @@
+package dev.romangaranin.leetcode;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -17,7 +22,7 @@ import java.util.Set;
  * Input: "pwwkew" Output: 3 Explanation: The answer is "wke", with the length of 3. Note that the answer must be a
  * substring, "pwke" is a subsequence and not a substring.
  */
-public class LongestSubstring extends Solution {
+public class LongestSubstring {
     public static void main(String[] args) {
         LongestSubstring longestSubstring = new LongestSubstring();
 
@@ -57,5 +62,15 @@ public class LongestSubstring extends Solution {
         }
 
         return longestSubstringSize;
+    }
+
+    protected static void validateEqual(Object actual, Object expected) {
+        if (actual instanceof Array) {
+            System.out.println("actual value = " + Arrays.toString((Object[]) actual));
+        } else {
+            System.out.println("actual value = " + actual);
+        }
+
+        System.out.println("equal to expected = " + Objects.deepEquals(actual, expected));
     }
 }

@@ -1,4 +1,8 @@
+package dev.romangaranin.leetcode;
+
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * https://leetcode.com/problems/two-sum/
@@ -13,7 +17,7 @@ import java.util.Arrays;
  * <p>
  * Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
  */
-class TwoSums extends Solution {
+class TwoSums {
     public static void main(String[] args) {
         TwoSums twoSums = new TwoSums();
 
@@ -38,5 +42,15 @@ class TwoSums extends Solution {
         throw new RuntimeException(String.format("Target cannot be satisfied for input:%s , target %s",
                 Arrays.toString(nums),
                 target));
+    }
+
+    protected static void validateEqual(Object actual, Object expected) {
+        if (actual instanceof Array) {
+            System.out.println("actual value = " + Arrays.toString((Object[]) actual));
+        } else {
+            System.out.println("actual value = " + actual);
+        }
+
+        System.out.println("equal to expected = " + Objects.deepEquals(actual, expected));
     }
 }
