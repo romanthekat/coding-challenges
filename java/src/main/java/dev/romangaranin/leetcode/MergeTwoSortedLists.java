@@ -44,7 +44,7 @@ class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode root = null;
         ListNode current = null;
-        ListNode next;
+        ListNode next; //alternatively: add dummy initial node, one 'active' pointer, return dummy.next
 
         while (true) {
             if (l1 != null && l2 != null) {
