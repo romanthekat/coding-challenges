@@ -52,25 +52,26 @@ public class ValidParentheses {
         test(new Solution().isValid("["), false);
         test(new Solution().isValid(""), true);
     }
-}
 
-class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        var brackets = Map.of(')', '(', ']', '[', '}', '{');
+    static class Solution {
+        public boolean isValid(String s) {
+            Stack<Character> stack = new Stack<>();
+            var brackets = Map.of(')', '(', ']', '[', '}', '{');
 
-        for (char c : s.toCharArray()) {
-            var isClosingBracket = brackets.containsKey(c);
-            if (isClosingBracket) {
-                var openingBracketMismatch = stack.isEmpty() || brackets.get(c) != stack.pop();
-                if (openingBracketMismatch) {
-                    return false;
+            for (char c : s.toCharArray()) {
+                var isClosingBracket = brackets.containsKey(c);
+                if (isClosingBracket) {
+                    var openingBracketMismatch = stack.isEmpty() || brackets.get(c) != stack.pop();
+                    if (openingBracketMismatch) {
+                        return false;
+                    }
+                } else {
+                    stack.push(c);
                 }
-            } else {
-                stack.push(c);
             }
-        }
 
-        return stack.isEmpty();
+            return stack.isEmpty();
+        }
     }
 }
+
