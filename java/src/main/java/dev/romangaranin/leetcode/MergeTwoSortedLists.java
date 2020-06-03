@@ -23,6 +23,42 @@ public class MergeTwoSortedLists {
         test(new Solution().mergeTwoLists(null, null), null);
     }
 
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ListNode listNode = (ListNode) o;
+            return val == listNode.val &&
+                    Objects.equals(next, listNode.next);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(val, next);
+        }
+
+        @Override
+        public String toString() {
+            return val + " " + next;
+        }
+    }
+
     static ListNode createListNode(int... values) {
         var root = new ListNode();
         var node = root;
@@ -38,80 +74,45 @@ public class MergeTwoSortedLists {
 
         return root;
     }
-}
 
-class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode root = null;
-        ListNode current = null;
-        ListNode next; //alternatively: add dummy initial node, one 'active' pointer, return dummy.next
+    static class Solution {
+        public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+            ListNode root = null;
+            ListNode current = null;
+            ListNode next; //alternatively: add dummy initial node, one 'active' pointer, return dummy.next
 
-        while (true) {
-            if (l1 != null && l2 != null) {
-                if (l1.val < l2.val) {
+            while (true) {
+                if (l1 != null && l2 != null) {
+                    if (l1.val < l2.val) {
+                        next = l1;
+                        l1 = l1.next;
+                    } else {
+                        next = l2;
+                        l2 = l2.next;
+                    }
+                } else if (l1 != null) {
                     next = l1;
                     l1 = l1.next;
-                } else {
+                } else if (l2 != null) {
                     next = l2;
                     l2 = l2.next;
+                } else {
+                    break;
                 }
-            } else if (l1 != null) {
-                next = l1;
-                l1 = l1.next;
-            } else if (l2 != null) {
-                next = l2;
-                l2 = l2.next;
-            } else {
-                break;
+
+                if (current != null) {
+                    current.next = next;
+                }
+                current = next;
+
+                if (root == null) {
+                    root = current;
+                }
             }
 
-            if (current != null) {
-                current.next = next;
-            }
-            current = next;
-
-            if (root == null) {
-                root = current;
-            }
+            return root;
         }
 
-        return root;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ListNode listNode = (ListNode) o;
-        return val == listNode.val &&
-                Objects.equals(next, listNode.next);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(val, next);
-    }
-
-    @Override
-    public String toString() {
-        return val + " " + next;
     }
 }
 
