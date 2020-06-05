@@ -72,9 +72,8 @@ public class WordLadder {
 
                     visited.add(word);
 
-                    var wordArray = word.toCharArray();
-                    for (var i = 0; i < wordArray.length; i++) {
-                        var originalChar = wordArray[i];
+                    for (var i = 0; i < word.length(); i++) {
+                        var wordArray = word.toCharArray();
                         for (var c = 'a'; c <= 'z'; c++) {
                             wordArray[i] = c;
                             var newWord = String.valueOf(wordArray);
@@ -82,7 +81,6 @@ public class WordLadder {
                                 toCheck.addLast(newWord);
                             }
                         }
-                        wordArray[i] = originalChar;
                     }
                 }
 
