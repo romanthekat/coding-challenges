@@ -52,52 +52,41 @@ public class WordLadder {
                 0);
     }
 
-    static class Pair {
-        String word;
-        Integer len;
-
-        public Pair(String word, Integer len) {
-            this.word = word;
-            this.len = len;
-        }
-
-        @Override
-        public String toString() {
-            return "Pair{" +
-                    "word='" + word + '\'' +
-                    ", len=" + len +
-                    '}';
-        }
-    }
-
     static class Solution {
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-            var visited = new HashSet<String>();
             var words = new HashSet<>(wordList);
 
-            var toCheck = new ArrayDeque<Pair>();
-            toCheck.add(new Pair(beginWord, 1));
+            var visited = new HashSet<String>();
+            var toCheck = new ArrayDeque<String>();
+            toCheck.add(beginWord);
 
+            var len = 1;
             while (!toCheck.isEmpty()) {
-                var entry = toCheck.pop();
-                visited.add(entry.word);
+                var levelSize = toCheck.size();
 
-                if (Objects.equals(entry.word, endWord)) {
-                    return entry.len;
-                }
-
-                var wordArray = entry.word.toCharArray();
-                for (var i = 0; i < wordArray.length; i++) {
-                    var originalChar = wordArray[i];
-                    for (var c = 'a'; c <= 'z'; c++) {
-                        wordArray[i] = c;
-                        var newWord = String.valueOf(wordArray);
-                        if (words.contains(newWord) && !visited.contains(newWord)) {
-                            toCheck.addLast(new Pair(newWord, entry.len + 1));
-                        }
+                for (var l = 0; l < levelSize; l++) {
+                    var word = toCheck.pop();
+                    if (Objects.equals(word, endWord)) {
+                        return len;
                     }
-                    wordArray[i] = originalChar;
+
+                    visited.add(word);
+
+                    var wordArray = word.toCharArray();
+                    for (var i = 0; i < wordArray.length; i++) {
+                        var originalChar = wordArray[i];
+                        for (var c = 'a'; c <= 'z'; c++) {
+                            wordArray[i] = c;
+                            var newWord = String.valueOf(wordArray);
+                            if (words.contains(newWord) && !visited.contains(newWord)) {
+                                toCheck.addLast(newWord);
+                            }
+                        }
+                        wordArray[i] = originalChar;
+                    }
                 }
+
+                len++;
             }
 
             return 0;
