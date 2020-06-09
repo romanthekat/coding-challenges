@@ -58,22 +58,20 @@ public class CombinationSum {
                                                      List<Integer> state,
                                                      int index,
                                                      int[] candidates,
-                                                     int target) {
-            var combination = state.stream().reduce(0, Integer::sum);
-
-            if (combination > target || index >= candidates.length) {
+                                                     int remain) {
+            if (remain < 0 || index >= candidates.length) {
                 return new ArrayList<>(result);
-            } else if (combination == target) {
+            } else if (remain == 0) {
                 result.add(state);
                 return new ArrayList<>(result);
             }
 
-            combinationSum(result, state, index + 1, candidates, target);
+            combinationSum(result, state, index + 1, candidates, remain);
 
             var copiedState = new ArrayList<>(state);
             copiedState.add(candidates[index]);
-            combinationSum(result, copiedState, index, candidates, target);
-            combinationSum(result, copiedState, index + 1, candidates, target);
+            combinationSum(result, copiedState, index, candidates, remain - candidates[index]);
+            combinationSum(result, copiedState, index + 1, candidates, remain - candidates[index]);
 
             return new ArrayList<>(result);
         }
