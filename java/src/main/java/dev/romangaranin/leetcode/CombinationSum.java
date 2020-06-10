@@ -1,8 +1,6 @@
 package dev.romangaranin.leetcode;
 
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
