@@ -37,6 +37,9 @@ public class CombinationSum {
     public static void main(String[] args) {
         test(new Solution().combinationSum(new int[]{2, 3, 6, 7}, 7), List.of(List.of(7), List.of(2, 2, 3)));
         test(new Solution().combinationSum(new int[]{2, 3, 5}, 8), List.of(List.of(2, 2, 2, 2), List.of(2, 3, 3), List.of(3, 5)));
+
+        test(new SolutionBacktracking().combinationSum(new int[]{2, 3, 6, 7}, 7), List.of(List.of(7), List.of(2, 2, 3)));
+        test(new SolutionBacktracking().combinationSum(new int[]{2, 3, 5}, 8), List.of(List.of(2, 2, 2, 2), List.of(2, 3, 3), List.of(3, 5)));
     }
 
     protected static void test(List<List<Integer>> got, List<List<Integer>> want) {
@@ -72,6 +75,32 @@ public class CombinationSum {
             combinationSum(result, copiedState, index + 1, candidates, remain - candidates[index]);
 
             return new ArrayList<>(result);
+        }
+    }
+
+    static class SolutionBacktracking {
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            var result = new ArrayList<List<Integer>>();
+            combinationSum(result, new ArrayList<>(), 0, candidates, target);
+            return result;
+        }
+
+        protected void combinationSum(List<List<Integer>> result,
+                                      List<Integer> state,
+                                      int index,
+                                      int[] candidates,
+                                      int remain) {
+            if (remain < 0) {
+                return;
+            } else if (remain == 0) {
+                result.add(new ArrayList<>(state));
+            } else {
+                for (var i = index; i < candidates.length; i++) {
+                    state.add(candidates[i]);
+                    combinationSum(result, state, i, candidates, remain - candidates[i]);
+                    state.remove(state.size() - 1);
+                }
+            }
         }
     }
 }
