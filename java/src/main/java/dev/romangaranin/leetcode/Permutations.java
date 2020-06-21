@@ -36,7 +36,7 @@ public class Permutations {
                 result.add(new ArrayList<>(state));
             } else {
                 for (int num : nums) {
-                    if (state.contains(num)) {
+                    if (state.contains(num)) { //worth using set, for exchange of memory
                         continue;
                     }
 
