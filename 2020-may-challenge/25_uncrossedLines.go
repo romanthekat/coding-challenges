@@ -31,7 +31,6 @@ func maxUncrossedLines(a []int, b []int) int {
 			} else {
 				table[i][j] = max(table[i][j-1], table[i-1][j])
 			}
-
 		}
 	}
 
