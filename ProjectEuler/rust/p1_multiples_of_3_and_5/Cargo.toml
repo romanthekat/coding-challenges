@@ -1,0 +1,6 @@
+[package]
+name = "p1_multiples_of_3_and_5"
+version = "0.1.0"
+authors = ["EvilKhaosKat <evilkhaoskat@gmail.com>"]
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "p4_largest_palindrome_product"
+version = "0.1.0"
+authors = ["EvilKhaosKat <evilkhaoskat@gmail.com>"]
+
+[dependencies]

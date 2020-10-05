@@ -1,0 +1,6 @@
+[package]
+name = "p3_largest_prime_factor"
+version = "0.1.0"
+authors = ["EvilKhaosKat <evilkhaoskat@gmail.com>"]
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "p5_smallest_multiple"
+version = "0.1.0"
+authors = ["EvilKhaosKat <evilkhaoskat@gmail.com>"]
+
+[dependencies]

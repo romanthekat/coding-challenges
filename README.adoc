@@ -1,0 +1,14 @@
+= Coding challenges
+
+see also https://github.com/EvilKhaosKat/advent_of_code[Advent of code]
+
+include::LeetCode/README.adoc[leveloffset=+1]
+
+include::CrackingCodingInterview/README.adoc[leveloffset=+1]
+
+include::ProjectEuler/README.adoc[leveloffset=+1]
+
+include::HackerRank/README.adoc[leveloffset=+1]
+
+include::Codewars/README.adoc[leveloffset=+1]
+

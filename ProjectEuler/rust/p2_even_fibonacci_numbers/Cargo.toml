@@ -1,0 +1,6 @@
+[package]
+name = "p2_even_fibonacci_numbers"
+version = "0.1.0"
+authors = ["EvilKhaosKat <evilkhaoskat@gmail.com>"]
+
+[dependencies]
