@@ -16,46 +16,51 @@ import static java.util.List.of;
  * Constraints:
  * <p>
  * 0 <= nums.length <= 3000
- * -105 <= nums[i] <= 105
+ * -10^5 <= nums[i] <= 10^5
  */
 class ThreeSum {
     public static void main(String[] args) {
         Helper.test(new Solution().threeSum(new int[]{}), of());
         Helper.test(new Solution().threeSum(new int[]{0}), of());
+        Helper.test(new Solution().threeSum(new int[]{0, 0, 0}), of(of(0, 0, 0)));
         Helper.test(new Solution().threeSum(new int[]{-1, 0, 1, 2, -1, -4}), of(of(-1, -1, 2), of(-1, 0, 1)));
+        Helper.test(new Solution().threeSum(new int[]{1, -1, -1, 0}), of(of(-1, 0, 1)));
     }
 
     static class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
-            var result = new HashMap<List<Integer>, Map<Integer, Long>>();
+            var result = new ArrayList<List<Integer>>();
 
-            if (nums.length < 3) {
-                return List.of();
-            }
+            Arrays.sort(nums);
 
             for (int i = 0; i < nums.length - 2; i++) {
-                var first = nums[i];
-                for (int j = i + 1; j < nums.length - 1; j++) {
-                    var second = nums[j];
-                    for (int k = j + 1; k < nums.length; k++) {
-                        var third = nums[k];
+                if (i > 0 && nums[i] == nums[i - 1]) {
+                    continue;
+                }
 
-                        if ((first + second + third) == 0) {
-                            var triple = List.of(first, second, third);
-                            var tripleValuesMap = triple.stream()
-                                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                var low = i + 1;
+                var high = nums.length - 1;
+                var sum = 0 - nums[i];
 
-                            if (result.values().stream().noneMatch(it -> it.equals(tripleValuesMap))) {
-                                result.put(triple, tripleValuesMap);
-                            }
+                while (low < high) {
+                    if (nums[low] + nums[high] == sum) {
+                        result.add(List.of(nums[i], nums[low], nums[high]));
+                        while (low < high && nums[low] == nums[low + 1]) {
+                            low++;
                         }
+                        while (low < high && nums[high] == nums[high - 1])
+                            high--;
+                        low++;
+                        high--;
+                    } else if (nums[low] + nums[high] < sum) {
+                        low++;
+                    } else {
+                        high--;
                     }
                 }
             }
 
-            return result.keySet().stream()
-                    .map(ArrayList::new)
-                    .collect(Collectors.toList());
+            return result;
         }
     }
 }
