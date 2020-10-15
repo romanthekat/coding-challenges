@@ -47,46 +47,24 @@ public class RemoveNthNodeFromLinkedList {
 
     static class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {
-            var buffer = new CyclicBuffer<>(ListNode.class, n + 1);
+            var fake = new ListNode();
+            fake.next = head;
 
-            var node = head;
-            while (node != null) {
-                buffer.add(node);
-                node = node.next;
+            var slow = fake;
+            var fast = fake;
+
+            for (var i = 1; i <= n + 1; i++) {
+                fast = fast.next;
             }
 
-            var prev = buffer.get(0);
-            if (prev == null) {
-                return null;
+            while (fast != null) {
+                slow = slow.next;
+                fast = fast.next;
             }
 
-            prev.next = buffer.get(2);
+            slow.next = slow.next.next;
 
-            return head;
-        }
-
-        static class CyclicBuffer<T> {
-            private final T[] buffer;
-            private int pointer = 0;
-
-            CyclicBuffer(Class<T> clazz, int count) {
-                buffer = (T[]) Array.newInstance(clazz, count);
-            }
-
-            public void add(T value) {
-                pointer = pointer % buffer.length;
-                buffer[pointer] = value;
-                pointer++;
-            }
-
-            public T get(int index) {
-                if (index > buffer.length - 1) {
-                    return null;
-                }
-
-                var realIndex = (pointer + index) % buffer.length;
-                return buffer[realIndex];
-            }
+            return fake.next;
         }
     }
 
