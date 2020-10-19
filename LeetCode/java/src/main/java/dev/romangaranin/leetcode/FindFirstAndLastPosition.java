@@ -68,10 +68,6 @@ public class FindFirstAndLastPosition {
             }
 
             var first = low;
-            while (first > 1 && nums[first - 1] == target) {
-                first--;
-            }
-
             var last = low;
             while (last < nums.length - 1 && nums[last + 1] == target) {
                 last++;
