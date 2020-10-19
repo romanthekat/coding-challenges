@@ -1,5 +1,7 @@
 package dev.romangaranin.leetcode;
 
+import static dev.romangaranin.leetcode.Helper.test;
+
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
  * <p>
@@ -23,11 +25,11 @@ package dev.romangaranin.leetcode;
  */
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
-        Helper.test(new Solution().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0), 4);
-        Helper.test(new Solution().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 3), -1);
-        Helper.test(new Solution().search(new int[]{}, 5), -1);
-        Helper.test(new Solution().search(new int[]{2}, 2), 0);
-        Helper.test(new Solution().search(new int[]{2}, 3), -1);
+        test(new Solution().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0), 4);
+        test(new Solution().search(new int[]{4, 5, 6, 7, 0, 1, 2}, 3), -1);
+        test(new Solution().search(new int[]{}, 5), -1);
+        test(new Solution().search(new int[]{2}, 2), 0);
+        test(new Solution().search(new int[]{2}, 3), -1);
     }
 
     static class Solution {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static dev.romangaranin.leetcode.Helper.test;
 import static java.util.List.of;
 
 public class RemoveNthNodeFromLinkedList {
@@ -39,10 +40,10 @@ public class RemoveNthNodeFromLinkedList {
      * @param args
      */
     public static void main(String[] args) {
-        Helper.test(new Solution().removeNthFromEnd(getList(1, 2, 3, 4, 5), 2), getList(1, 2, 3, 5));
-        Helper.test(new Solution().removeNthFromEnd(getList(1), 1), null);
-        Helper.test(new Solution().removeNthFromEnd(getList(1, 2), 1), getList(1));
-        Helper.test(new Solution().removeNthFromEnd(getList(1, 2), 2), getList(2));
+        test(new Solution().removeNthFromEnd(getList(1, 2, 3, 4, 5), 2), getList(1, 2, 3, 5));
+        test(new Solution().removeNthFromEnd(getList(1), 1), null);
+        test(new Solution().removeNthFromEnd(getList(1, 2), 1), getList(1));
+        test(new Solution().removeNthFromEnd(getList(1, 2), 2), getList(2));
     }
 
     static class Solution {

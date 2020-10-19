@@ -2,6 +2,8 @@ package dev.romangaranin.leetcode;
 
 import java.util.*;
 
+import static dev.romangaranin.leetcode.Helper.test;
+
 /**
  * Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
  * <p>
@@ -41,13 +43,13 @@ import java.util.*;
  */
 public class WordLadder {
     public static void main(String[] args) {
-        Helper.test(new Solution().ladderLength("hit", "cog",
+        test(new Solution().ladderLength("hit", "cog",
                 List.of("hot", "dot", "dog", "lot", "log", "cog")),
                 5);
-        Helper.test(new Solution().ladderLength("aaa", "bbb",
+        test(new Solution().ladderLength("aaa", "bbb",
                 List.of("aab", "abb", "aba", "bbb")),
                 4);
-        Helper.test(new Solution().ladderLength("hit", "cog",
+        test(new Solution().ladderLength("hit", "cog",
                 List.of("hot", "dot", "dog", "lot", "log")),
                 0);
     }

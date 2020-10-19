@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static dev.romangaranin.leetcode.Helper.test;
 import static java.util.List.of;
 
 /**
@@ -20,11 +21,11 @@ import static java.util.List.of;
  */
 class ThreeSum {
     public static void main(String[] args) {
-        Helper.test(new Solution().threeSum(new int[]{}), of());
-        Helper.test(new Solution().threeSum(new int[]{0}), of());
-        Helper.test(new Solution().threeSum(new int[]{0, 0, 0}), of(of(0, 0, 0)));
-        Helper.test(new Solution().threeSum(new int[]{-1, 0, 1, 2, -1, -4}), of(of(-1, -1, 2), of(-1, 0, 1)));
-        Helper.test(new Solution().threeSum(new int[]{1, -1, -1, 0}), of(of(-1, 0, 1)));
+        test(new Solution().threeSum(new int[]{}), of());
+        test(new Solution().threeSum(new int[]{0}), of());
+        test(new Solution().threeSum(new int[]{0, 0, 0}), of(of(0, 0, 0)));
+        test(new Solution().threeSum(new int[]{-1, 0, 1, 2, -1, -4}), of(of(-1, -1, 2), of(-1, 0, 1)));
+        test(new Solution().threeSum(new int[]{1, -1, -1, 0}), of(of(-1, 0, 1)));
     }
 
     static class Solution {
