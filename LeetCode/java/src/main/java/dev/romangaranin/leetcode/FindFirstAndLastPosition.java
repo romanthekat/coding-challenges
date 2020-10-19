@@ -68,7 +68,7 @@ public class FindFirstAndLastPosition {
             }
 
             var first = low;
-            var last = low;
+            var last = low; //TODO second binary search for faster last entry search
             while (last < nums.length - 1 && nums[last + 1] == target) {
                 last++;
             }
