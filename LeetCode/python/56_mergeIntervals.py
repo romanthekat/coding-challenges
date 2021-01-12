@@ -33,14 +33,12 @@ class Solution:
 
         result = [intervals.pop(0)]
 
-        # alternatively: iterate by id to avoid pop/append of prev item when not no merging needed
         for interval in intervals:
-            prev_interval = result.pop()
+            prev_interval = result[-1]
 
             if prev_interval[1] >= interval[0]:
-                result.append([prev_interval[0], max(prev_interval[1], interval[1])])
+                prev_interval[1] = max(prev_interval[1], interval[1])
             else:
-                result.append(prev_interval)
                 result.append(interval)
 
         return result
