@@ -16,8 +16,8 @@ Constraints:
 
 */
 func main() {
-	common.Assert(maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}), 6)
-	common.Assert(maxSubArray([]int{-1}), -1)
+	common.AssertEqual(maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}), 6)
+	common.AssertEqual(maxSubArray([]int{-1}), -1)
 }
 
 func maxSubArray(nums []int) int {

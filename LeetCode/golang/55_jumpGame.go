@@ -3,8 +3,8 @@ package main
 import "github.com/EvilKhaosKat/coding-challenges/LeetCode/golang/common"
 
 func main() {
-	common.Assert(canJump([]int{2, 3, 1, 1, 4}), true)
-	common.Assert(canJump([]int{3, 2, 1, 0, 4}), false)
+	common.AssertEqual(canJump([]int{2, 3, 1, 1, 4}), true)
+	common.AssertEqual(canJump([]int{3, 2, 1, 0, 4}), false)
 }
 
 /**
