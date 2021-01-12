@@ -31,8 +31,7 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key=lambda x: x[0])
 
-        result = [intervals[0]]
-        intervals = intervals[1:]
+        result = [intervals.pop(0)]
 
         # alternatively: iterate by id to avoid pop/append of prev item when not no merging needed
         for interval in intervals:
