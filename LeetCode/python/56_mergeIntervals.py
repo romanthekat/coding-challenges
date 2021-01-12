@@ -34,6 +34,7 @@ class Solution:
         result = [intervals[0]]
         intervals = intervals[1:]
 
+        # alternatively: iterate by id to avoid pop/append of prev item when not no merging needed
         for interval in intervals:
             prev_interval = result.pop()
 
