@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/EvilKhaosKat/coding-challenges/LeetCode/golang/common"
 )
 
@@ -33,18 +32,6 @@ func reorderList(head *ListNode) {
 		fast = fast.Next.Next
 	}
 
-	//1 2 3 4 5 6 7 8 9 10
-	//6 7 8 9 10
-	//prev -
-	//curr 6
-	//next 6->7=7
-	//6-> -
-	//prev = curr = 6
-	//cur = next = 7
-	//
-	//next = 7 -> 8
-
-	fmt.Println(slow.Next.Val)
 	//reverse second half of list
 	var prev *ListNode
 	curr := slow.Next
