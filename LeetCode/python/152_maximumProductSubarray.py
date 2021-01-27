@@ -27,11 +27,10 @@ class Solution:
         for index in range(1, len(nums)):
             num = nums[index]
 
-            if num < 0:
-                max_product, min_product = min_product, max_product
+            candidates = (num, max_product * num, min_product * num)
 
-            max_product = max(num, max_product * num)
-            min_product = min(num, min_product * num)
+            max_product = max(candidates)
+            min_product = min(candidates)
 
             result = max(result, max_product)
 
