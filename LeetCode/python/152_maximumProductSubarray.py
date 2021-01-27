@@ -27,11 +27,8 @@ class Solution:
         for index in range(1, len(nums)):
             num = nums[index]
 
-            if num < 0:
-                min_product, max_product = max_product, min_product
-
-            max_product = max(num, max_product * num)
-            min_product = min(num, min_product * num)
+            max_product = max(num, max_product * num, min_product * num)
+            min_product = min(num, min_product * num, max_product * num)
 
             result = max(result, max_product)
 
