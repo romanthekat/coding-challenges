@@ -27,8 +27,11 @@ class Solution:
         for index in range(1, len(nums)):
             num = nums[index]
 
-            max_product = max(num, max_product * num, min_product * num)
-            min_product = min(num, min_product * num, max_product * num)
+            if num < 0:
+                max_product, min_product = min_product, max_product
+
+            max_product = max(num, max_product * num)
+            min_product = min(num, min_product * num)
 
             result = max(result, max_product)
 
@@ -42,3 +45,4 @@ if __name__ == '__main__':
     assert_equal(s.maxProduct([-2]), -2)
     assert_equal(s.maxProduct([-2, 3, -4]), 24)
     assert_equal(s.maxProduct([3, -1, 4]), 4)
+    assert_equal(s.maxProduct([-4,-3,-2]), 12)
