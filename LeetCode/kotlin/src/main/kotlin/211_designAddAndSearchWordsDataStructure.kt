@@ -37,6 +37,7 @@ Constraints:
     At most 50000 calls will be made to addWord and search.
 
  */
+//alternatively: use array isntead of map, don't keep letter in Trie node since not used here
 class WordDictionary {
     private var root: Trie = Trie(Char.MAX_SURROGATE)
 
