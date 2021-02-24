@@ -63,19 +63,19 @@ class WordDictionary {
     }
 
     fun search(word: String): Boolean {
-        return search(word, root)
+        return search(word, root, 0)
     }
 
-    fun search(word: String, node: Trie): Boolean {
-        if (word.isEmpty()) {
+    fun search(word: String, node: Trie, index: Int): Boolean {
+        if (word.length == index) {
             return node.isWord
         }
 
-        val letter = word[0]
+        val letter = word[index]
 
         if (letter == '.') {
             for (child in node.children.values) {
-                if (search(word.substring(1), child)) {
+                if (search(word, child, index + 1)) {
                     return true
                 }
             }
@@ -85,7 +85,7 @@ class WordDictionary {
 
         val child = node.children[letter]
         if (child != null) {
-            return search(word.substring(1), child)
+            return search(word, child, index + 1)
         }
 
         return false
