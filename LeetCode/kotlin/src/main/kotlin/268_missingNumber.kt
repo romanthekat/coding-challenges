@@ -1,3 +1,4 @@
+import Common.Companion.assertEquals
 import java.util.*
 
 /*
@@ -57,8 +58,4 @@ fun main() {
     assertEquals(s.missingNumber(intArrayOf(0, 1)), 2)
     assertEquals(s.missingNumber(intArrayOf(0)), 1)
     assertEquals(s.missingNumber(intArrayOf(9, 6, 4, 2, 3, 5, 7, 0, 1)), 8)
-}
-
-fun assertEquals(got: Any, want: Any) {
-    print("%s|got: %s, want: %s\n".format(got == want, got, want))
 }
