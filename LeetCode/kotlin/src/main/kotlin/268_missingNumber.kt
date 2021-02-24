@@ -39,6 +39,7 @@ n == nums.length
 All the numbers of nums are unique.
 */
 class Solution {
+    //alternatively: XOR all number and negate, sort and binary search, sum required - sum real
     fun missingNumber(nums: IntArray): Int {
         nums.sort()
         for ((index, num) in nums.withIndex()) {
