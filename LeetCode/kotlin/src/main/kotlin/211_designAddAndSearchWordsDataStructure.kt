@@ -1,5 +1,4 @@
 import Common.Companion.assertEquals
-import java.util.*
 
 /*
 Design a data structure that supports adding new words and finding if a string matches any previously added string.
@@ -37,22 +36,22 @@ Constraints:
     At most 50000 calls will be made to addWord and search.
 
  */
-//alternatively: use array isntead of map, don't keep letter in Trie node since not used here
+//alternatively: use array instead of map, don't keep letter in Trie node since not used here, iterate instead recursion
 class WordDictionary {
-    private var root: Trie = Trie(Char.MAX_SURROGATE)
+    private var root: TrieNode = TrieNode(Char.MAX_SURROGATE)
 
-    class Trie(val letter: Char) {
+    class TrieNode(val letter: Char) {
         var isWord: Boolean = false
-        var children: MutableMap<Char, Trie> = mutableMapOf()
+        var children: MutableMap<Char, TrieNode> = mutableMapOf()
     }
 
     fun addWord(word: String) {
-        var node: Trie = root
+        var node: TrieNode = root
 
         for (c in word) {
             val child = node.children[c]
             if (child == null) {
-                val newNode = Trie(c)
+                val newNode = TrieNode(c)
                 node.children[c] = newNode
                 node = newNode
             } else {
@@ -67,7 +66,7 @@ class WordDictionary {
         return search(word, root, 0)
     }
 
-    fun search(word: String, node: Trie, index: Int): Boolean {
+    private fun search(word: String, node: TrieNode, index: Int): Boolean {
         if (word.length == index) {
             return node.isWord
         }
