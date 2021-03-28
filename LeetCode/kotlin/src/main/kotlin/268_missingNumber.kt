@@ -39,21 +39,23 @@ n == nums.length
 0 <= nums[i] <= n
 All the numbers of nums are unique.
 */
-class Solution {
-    //alternatively: XOR all number and negate, sort and binary search, sum required - sum real
-    fun missingNumber(nums: IntArray): Int {
-        nums.sort()
-        for ((index, num) in nums.withIndex()) {
-            if (index != num) {
-                return index
+class `268_missingNumber` {
+    class Solution {
+        //alternatively: XOR all number and negate, sort and binary search, sum required - sum real
+        fun missingNumber(nums: IntArray): Int {
+            nums.sort()
+            for ((index, num) in nums.withIndex()) {
+                if (index != num) {
+                    return index
+                }
             }
+            return nums.size
         }
-        return nums.size
     }
 }
 
 fun main() {
-    val s = Solution()
+    val s = `268_missingNumber`.Solution()
     assertEquals(s.missingNumber(intArrayOf(3, 0, 1)), 2)
     assertEquals(s.missingNumber(intArrayOf(0, 1)), 2)
     assertEquals(s.missingNumber(intArrayOf(0)), 1)
