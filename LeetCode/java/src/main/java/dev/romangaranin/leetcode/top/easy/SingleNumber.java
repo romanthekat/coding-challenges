@@ -27,6 +27,18 @@ public class SingleNumber {
 
     static class Solution {
         public int singleNumber(int[] nums) {
+            var result = 0;
+
+            for (int num : nums) {
+                result ^= num;
+            }
+
+            return result;
+        }
+    }
+
+    static class SolutionSort {
+        public int singleNumber(int[] nums) {
             Arrays.sort(nums);
             for (int i = 1; i < nums.length; i = i + 2) {
                 if (nums[i - 1] != nums[i]) {
