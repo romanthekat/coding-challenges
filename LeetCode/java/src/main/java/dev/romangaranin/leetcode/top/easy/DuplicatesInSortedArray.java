@@ -42,15 +42,15 @@ public class DuplicatesInSortedArray {
 
     static class Solution {
         public int removeDuplicates(int[] nums) {
-            if (nums.length < 1) {
+            if (nums.length == 0) {
                 return nums.length;
             }
 
             var writeIndex = 0;
             for (int i = 1; i < nums.length; i++) {
                 if (nums[i] > nums[writeIndex]) {
-                    nums[writeIndex + 1] = nums[i];
                     writeIndex++;
+                    nums[writeIndex] = nums[i];
                 }
             }
 
