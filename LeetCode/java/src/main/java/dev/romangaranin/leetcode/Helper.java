@@ -3,8 +3,6 @@ package dev.romangaranin.leetcode;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static java.lang.String.format;
-
 public class Helper {
     public static void test(Object got, Object want) {
         System.out.printf("%s|got: %s, want: %s%n", Objects.equals(got, want), got, want);
@@ -15,7 +13,7 @@ public class Helper {
     }
 
     public static void test2dArrays(int[][] got, int[][] want) {
-        System.out.printf("%s\ngot: \n%swant: \n%s%n", Arrays.equals(got, want), print2dArray(got), print2dArray(want));
+        System.out.printf("%s\ngot: \n%swant: \n%s%n", Arrays.deepEquals(got, want), print2dArray(got), print2dArray(want));
     }
 
     private static String print2dArray(int[][] a) {
