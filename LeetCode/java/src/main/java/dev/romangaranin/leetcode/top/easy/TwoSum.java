@@ -1,5 +1,11 @@
 package dev.romangaranin.leetcode.top.easy;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static dev.romangaranin.leetcode.Helper.test;
 import static dev.romangaranin.leetcode.Helper.testArrays;
 
@@ -50,13 +56,17 @@ public class TwoSum {
 
     static class Solution {
         public int[] twoSum(int[] nums, int target) {
-            for (int i = 0; i < nums.length - 1; i++) {
-                for (int j = i + 1; j < nums.length; j++) {
-                    if (nums[i] + nums[j] == target) {
-                        return new int[]{i, j};
-                    }
+            var map = new HashMap<Integer, Integer>();
+            for (int i = 0; i < nums.length; i++) {
+                var numTwo = Math.abs(target - nums[i]);
+
+                if (map.containsKey(numTwo)) {
+                    return new int[]{map.get(numTwo), i};
+                } else {
+                    map.put(nums[i], i);
                 }
             }
+
             System.out.println("can't find two sum numbers to meet the target");
             return new int[]{-1, -1};
         }
