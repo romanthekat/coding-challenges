@@ -40,6 +40,7 @@ public class FirstUniqCharInString {
         test(s.firstUniqChar("aabb"), -1);
     }
 
+    //better to use array of chars (due to constraints) at a cost of simplicity and extensibility
     static class Solution {
         public int firstUniqChar(String s) {
             var length = s.length();
