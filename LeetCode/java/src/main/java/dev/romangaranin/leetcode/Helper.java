@@ -12,6 +12,10 @@ public class Helper {
         System.out.printf("%s|got: %s, want: %s%n", Arrays.equals(got, want), Arrays.toString(got), Arrays.toString(want));
     }
 
+    public static void testCharArrays(char[] got, char[] want) {
+        System.out.printf("%s|got: %s, want: %s%n", Arrays.equals(got, want), Arrays.toString(got), Arrays.toString(want));
+    }
+
     public static void test2dArrays(int[][] got, int[][] want) {
         System.out.printf("%s\ngot: \n%swant: \n%s%n", Arrays.deepEquals(got, want), print2dArray(got), print2dArray(want));
     }
