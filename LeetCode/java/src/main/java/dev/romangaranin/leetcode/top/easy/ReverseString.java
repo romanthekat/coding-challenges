@@ -40,17 +40,17 @@ public class ReverseString {
                 return;
             }
 
-            var leftIdx = 0;
-            var rightIdx = s.length - 1;
-            while (leftIdx < rightIdx) {
-                var left = s[leftIdx];
-                var right = s[rightIdx];
+            var i = 0;
+            var j = s.length - 1;
+            while (i < j) {
+                var left = s[i];
+                var right = s[j];
 
-                s[leftIdx] = right;
-                s[rightIdx] = left;
+                s[i] = right;
+                s[j] = left;
 
-                leftIdx++;
-                rightIdx--;
+                i++;
+                j--;
             }
         }
     }
