@@ -1,12 +1,7 @@
 package dev.romangaranin.leetcode.top.easy;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import static dev.romangaranin.leetcode.Helper.test;
 import static dev.romangaranin.leetcode.Helper.testArrays;
 
 /**

@@ -1,7 +1,7 @@
 package dev.romangaranin.leetcode.top.easy;
 
 
-import static dev.romangaranin.leetcode.Helper.*;
+import static dev.romangaranin.leetcode.Helper.testCharArrays;
 
 /**
  * Write a function that reverses a string. The input string is given as an array of characters s.

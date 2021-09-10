@@ -1,6 +1,5 @@
 package dev.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.test;
 import static dev.romangaranin.leetcode.Helper.testArrays;
 
 /**

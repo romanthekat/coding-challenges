@@ -2,9 +2,7 @@ package dev.romangaranin.leetcode.top.easy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
-import static dev.romangaranin.leetcode.Helper.test;
 import static dev.romangaranin.leetcode.Helper.testArrays;
 
 /**
