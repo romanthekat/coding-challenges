@@ -50,6 +50,7 @@ public class StrStr {
         test(s.strStr("mississippi", "issip"), 4);
     }
 
+    //KMP algo would be much better
     static class Solution {
         public int strStr(String haystack, String needle) {
             if (needle.length() == 0) {
@@ -68,7 +69,8 @@ public class StrStr {
             return -1;
         }
 
-        //ugly, but no reason to compare first letter again; easier to continue outer loop rather than using label
+        //ugly, but no reason to compare first letter again; alternative to continue outer loop rather than using label
+        //and it's faster than inlining for some reasons (maybe alternative did excess memory allocations)
         private boolean isContainFromSecondLetter(String haystack, String needle, int startIndex) {
             for (int j = 1; j < needle.length(); j++) {
                 if (haystack.charAt(startIndex + j) != needle.charAt(j)) {
