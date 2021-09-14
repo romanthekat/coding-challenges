@@ -81,4 +81,37 @@ public class StrStr {
             return true;
         }
     }
+
+    //works faster
+    static class SolutionWhileLoop {
+        public int strStr(String haystack, String needle) {
+            if (needle.length() == 0) {
+                return 0;
+            }
+
+            //a tad faster?
+            var haystackArray = haystack.toCharArray();
+            var needleArray = needle.toCharArray();
+
+            var i = 0;
+            var j = 0;
+
+            while (i < haystack.length()) {
+                if (haystackArray[i] == needleArray[j]) {
+                    i++;
+                    j++;
+                } else {
+                    i = i - j + 1;
+                    j = 0;
+                    continue;
+                }
+
+                if (j == needleArray.length) {
+                    return i - needleArray.length;
+                }
+            }
+
+            return -1;
+        }
+    }
 }
