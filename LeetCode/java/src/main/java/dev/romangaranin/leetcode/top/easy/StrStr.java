@@ -89,7 +89,7 @@ public class StrStr {
                 return 0;
             }
 
-            //a tad faster?
+            //a tad faster with arrays rather than string.charAt?
             var haystackArray = haystack.toCharArray();
             var needleArray = needle.toCharArray();
 
