@@ -75,22 +75,17 @@ public class ReverseLinkedList {
 
     static class Solution {
         public ListNode reverseList(ListNode head) {
-            if (head == null) {
-                return head;
-            }
-
-            var prev = head;
-            var curr = head.next;
+            ListNode prev = null;
+            ListNode curr = head;
+            ListNode next = null;
 
             while (curr != null) {
-                var next = curr.next;
+                next = curr.next;
                 curr.next = prev;
 
                 prev = curr;
                 curr = next;
             }
-
-            head.next = null;
 
             return prev;
         }
