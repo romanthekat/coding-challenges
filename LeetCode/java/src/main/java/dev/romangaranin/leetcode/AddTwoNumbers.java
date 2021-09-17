@@ -1,7 +1,8 @@
 package dev.romangaranin.leetcode;
 
-import java.util.Arrays;
-import java.util.List;
+import dev.romangaranin.leetcode.Helper.ListNode;
+
+import static dev.romangaranin.leetcode.Helper.newLinkedList;
 
 /**
  * https://leetcode.com/problems/add-two-numbers/
@@ -25,8 +26,8 @@ public class AddTwoNumbers {
         System.out.println(result);*/
 
         ListNode result = addTwoNumbers.addTwoNumbers(
-                createListNode(Arrays.asList(9)),
-                createListNode(Arrays.asList(1,9,9,9,9,9,9,9,9,9)));
+                newLinkedList(9),
+                newLinkedList(1, 9, 9, 9, 9, 9, 9, 9, 9, 9));
         System.out.println(result);
     }
 
@@ -84,46 +85,6 @@ public class AddTwoNumbers {
             return l.val;
         } else {
             return 0;
-        }
-    }
-
-    //HELPERS
-    private static ListNode createListNode(List<Integer> elements) {
-        ListNode head = null;
-        ListNode prev = null;
-
-        for (int element : elements) {
-            ListNode node = new ListNode(element);
-
-            if (prev != null) {
-                prev.next = node;
-            }
-
-            if (head == null) {
-                head = node;
-            }
-
-            prev = node;
-        }
-
-        return head;
-    }
-
-    static public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        @Override
-        public String toString() {
-            if (next != null) {
-                return val + " " + next;
-            } else {
-                return String.valueOf(val);
-            }
         }
     }
 }

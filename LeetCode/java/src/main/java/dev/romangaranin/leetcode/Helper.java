@@ -27,4 +27,52 @@ public class Helper {
         }
         return result.toString();
     }
+
+    public static void testLinkedList(ListNode got, int... want) {
+        var curr = got;
+        for (var wantValue : want) {
+            System.out.printf("%s|got: %s, want: %s%n", curr.val == wantValue, curr.val, wantValue);
+            curr = curr.next;
+        }
+
+        System.out.printf("%s|got: %s, want: %s%n", curr == null, curr, null);
+    }
+
+    public static ListNode newLinkedList(int... input) {
+        var pseudoHead = new ListNode();
+
+        var current = pseudoHead;
+        for (var value : input) {
+            current.next = new ListNode(value);
+            current = current.next;
+        }
+
+        return pseudoHead.next;
+    }
+
+    public static class ListNode {
+        public int val;
+        public ListNode next;
+
+        public ListNode() {
+        }
+
+        public ListNode(int val) {
+            this.val = val;
+        }
+
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            if (next != null) {
+                return val + " " + next;
+            } else {
+                return String.valueOf(val);
+            }
+        }
+    }
 }
