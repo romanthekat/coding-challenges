@@ -33,24 +33,21 @@ public class MergeTwoSortedLists {
             ListNode head = new ListNode();
             ListNode curr = head;
 
-            while (l1 != null || l2 != null) {
-                if (l1 != null && l2 != null) {
-                    if (l1.val < l2.val) {
-                        curr.next = l1;
-                        curr = l1;
-                        l1 = l1.next;
-                    } else {
-                        curr.next = l2;
-                        curr = l2;
-                        l2 = l2.next;
-                    }
-                } else if (l1 != null) {
+            while (l1 != null && l2 != null) {
+                if (l1.val < l2.val) {
                     curr.next = l1;
-                    break;
-                } else if (l2 != null) {
+                    l1 = l1.next;
+                } else {
                     curr.next = l2;
-                    break;
+                    l2 = l2.next;
                 }
+                curr = curr.next;
+            }
+
+            if (l1 != null) {
+                curr.next = l1;
+            } else if (l2 != null) {
+                curr.next = l2;
             }
 
             return head.next;
