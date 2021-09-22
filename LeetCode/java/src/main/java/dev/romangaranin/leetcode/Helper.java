@@ -77,7 +77,7 @@ public class Helper {
     }
 
     public static class TreeNode {
-        int val;
+        public int val;
         public TreeNode left;
         public TreeNode right;
 
