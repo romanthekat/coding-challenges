@@ -33,6 +33,7 @@ public class BinaryTreeLevelOrderTraversal {
         ));
     }
 
+    //TODO current queue size == whole level, so whole X nodes for a level can be polled at once, offering new items
     static class Solution {
         public List<List<Integer>> levelOrder(TreeNode root) {
             List<List<Integer>> result = new ArrayList<>();
