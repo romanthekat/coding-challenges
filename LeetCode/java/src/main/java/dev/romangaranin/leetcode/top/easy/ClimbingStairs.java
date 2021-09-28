@@ -14,14 +14,17 @@ import static dev.romangaranin.leetcode.Helper.test;
  */
 public class ClimbingStairs {
     public static void main(String[] args) {
-        var s = new Solution();
+        var s = new SolutionBottomUp();
 
         test(s.climbStairs(1), 1);
         test(s.climbStairs(2), 2);
         test(s.climbStairs(3), 3);
+        test(s.climbStairs(4), 5);
+        test(s.climbStairs(5), 8);
     }
 
-    static class Solution {
+    //top-bottom approach with result[n]=result[n-1]+result[n-2] is kinda more expressive
+    static class SolutionBottomUp {
         public int climbStairs(int n) {
             var mem = new int[n];
 
