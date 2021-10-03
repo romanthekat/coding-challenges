@@ -32,6 +32,29 @@ public class ValidParentheses {
 
     static class Solution {
         public boolean isValid(String s) {
+            if (s.length() % 2 != 0) {
+                return false;
+            }
+
+            var stack = new Stack<Character>();
+            for (char c : s.toCharArray()) {
+                if (c == '[') {
+                    stack.push(']');
+                } else if (c == '(') {
+                    stack.push(')');
+                } else if (c == '{') {
+                    stack.push('}');
+                } else if (stack.isEmpty() || stack.pop() != c) {
+                    return false;
+                }
+            }
+
+            return stack.isEmpty();
+        }
+    }
+
+    static class SolutionOpeningBracket {
+        public boolean isValid(String s) {
             var mapOpenToClose = Map.of('[', ']', '{', '}', '(', ')');
             var stack = new Stack<Character>();
 
@@ -52,7 +75,7 @@ public class ValidParentheses {
         }
     }
 
-    static class SolutionClosing {
+    static class SolutionClosingBracket {
         public boolean isValid(String s) {
             Stack<Character> stack = new Stack<>();
             var brackets = Map.of(')', '(', ']', '[', '}', '{');
