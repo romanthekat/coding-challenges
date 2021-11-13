@@ -14,24 +14,24 @@ public class Task20211113 {
     public static void main(String[] args) {
         var s = new Solution();
 
-        System.out.println(s.getFibonnaci(0) + " vs 0");
-        System.out.println(s.getFibonnaci(1) + " vs 1");
-        System.out.println(s.getFibonnaci(2) + " vs 1");
-        System.out.println(s.getFibonnaci(3) + " vs 2");
-        System.out.println(s.getFibonnaci(4) + " vs 3");
-        System.out.println(s.getFibonnaci(5) + " vs 5");
-        System.out.println(s.getFibonnaci(6) + " vs 8");
-        System.out.println(s.getFibonnaci(7) + " vs 13");
+        System.out.println(s.getFibonacci(0) + " vs 0");
+        System.out.println(s.getFibonacci(1) + " vs 1");
+        System.out.println(s.getFibonacci(2) + " vs 1");
+        System.out.println(s.getFibonacci(3) + " vs 2");
+        System.out.println(s.getFibonacci(4) + " vs 3");
+        System.out.println(s.getFibonacci(5) + " vs 5");
+        System.out.println(s.getFibonacci(6) + " vs 8");
+        System.out.println(s.getFibonacci(7) + " vs 13");
 
         System.out.println();
-        System.out.println(s.getFibonnaciRec(0) + " vs 0");
-        System.out.println(s.getFibonnaciRec(1) + " vs 1");
-        System.out.println(s.getFibonnaciRec(2) + " vs 1");
-        System.out.println(s.getFibonnaciRec(3) + " vs 2");
-        System.out.println(s.getFibonnaciRec(4) + " vs 3");
-        System.out.println(s.getFibonnaciRec(5) + " vs 5");
-        System.out.println(s.getFibonnaciRec(6) + " vs 8");
-        System.out.println(s.getFibonnaciRec(7) + " vs 13");
+        System.out.println(s.getFibonacciRec(0) + " vs 0");
+        System.out.println(s.getFibonacciRec(1) + " vs 1");
+        System.out.println(s.getFibonacciRec(2) + " vs 1");
+        System.out.println(s.getFibonacciRec(3) + " vs 2");
+        System.out.println(s.getFibonacciRec(4) + " vs 3");
+        System.out.println(s.getFibonacciRec(5) + " vs 5");
+        System.out.println(s.getFibonacciRec(6) + " vs 8");
+        System.out.println(s.getFibonacciRec(7) + " vs 13");
     }
 
     /**
@@ -51,7 +51,7 @@ public class Task20211113 {
      * return memo[n]
      */
     static class Solution {
-        public int getFibonnaci(int index) {
+        public int getFibonacci(int index) {
             if (index == 0) {
                 return 0;
             } else if (index == 1) {
@@ -73,23 +73,23 @@ public class Task20211113 {
             return res;
         }
 
-        public int getFibonnaciRec(int index) {
+        public int getFibonacciRec(int index) {
             var memo = new int[index + 1];
             for (int i = 0; i <= index; i++) {
                 memo[i] = -1;
             }
 
-            return getFibonnaciRecWithMemo(index, memo);
+            return getFibonacciRecWithMemo(index, memo);
         }
 
-        private int getFibonnaciRecWithMemo(int index,
+        private int getFibonacciRecWithMemo(int index,
                                             int[] memo) {
             if (index < 2) {
                 return index;
             }
 
             if (memo[index] == -1) {
-                memo[index] = getFibonnaciRecWithMemo(index - 2, memo) + getFibonnaciRecWithMemo(index - 1, memo);
+                memo[index] = getFibonacciRecWithMemo(index - 2, memo) + getFibonacciRecWithMemo(index - 1, memo);
             }
 
             return memo[index];
