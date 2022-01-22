@@ -1,3 +1,3 @@
-module github.com/EvilKhaosKat/LeetCode/containerWithMostWater
+module github.com/romanthekat/LeetCode/containerWithMostWater
 
 go 1.14

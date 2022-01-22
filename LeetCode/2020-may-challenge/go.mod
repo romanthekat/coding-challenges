@@ -1,3 +1,3 @@
-module github.com/EvilKhaosKat/LeetCode
+module github.com/romanthekat/LeetCode
 
 go 1.14

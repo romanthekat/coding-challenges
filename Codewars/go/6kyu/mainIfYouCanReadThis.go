@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"github.com/EvilKhaosKat/Codewars/go/6kyu/ifYouCanReadThis"
+	"github.com/romanthekat/Codewars/go/6kyu/ifYouCanReadThis"
 )
 
 func main() {

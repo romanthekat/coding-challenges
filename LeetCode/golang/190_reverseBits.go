@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/EvilKhaosKat/coding-challenges/LeetCode/golang/common"
+	"github.com/romanthekat/coding-challenges/LeetCode/golang/common"
 	"math/bits"
 )
 
