@@ -29,6 +29,7 @@ Constraints:
     -109 <= target <= 109
     Only one valid answer exists.
 """
+import collections
 from typing import List
 
 from LeetCode.common import assert_equal
@@ -36,10 +37,12 @@ from LeetCode.common import assert_equal
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for index_1 in range(len(nums) - 1):
-            for index_2 in range(index_1 + 1, len(nums)):
-                if (nums[index_1] + nums[index_2]) == target:
-                    return [index_1, index_2]
+        d = collections.defaultdict()
+
+        for idx, num in enumerate(nums):
+            if target - num in d:
+                return [d[target - num], idx]
+            d[num] = idx
 
         print("pair not found")
         return [-1, -1]
