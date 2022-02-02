@@ -1,8 +1,10 @@
 # Compiled class file
 build
+target
+*.class
+
 .gradle
 .maven
-*.class
 
 # Log file
 *.log
