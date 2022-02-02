@@ -1,6 +1,6 @@
 package main
 
-import "github.com/romanthekat/coding-challenges/LeetCode/golang/common"
+import "github.com/romanthekat/coding-challenges/LeetCode/common"
 
 func main() {
 	common.AssertEqual(canJump([]int{2, 3, 1, 1, 4}), true)

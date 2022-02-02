@@ -1,6 +1,6 @@
 package main
 
-import "github.com/romanthekat/coding-challenges/LeetCode/golang/common"
+import "github.com/romanthekat/coding-challenges/LeetCode/common"
 
 /**
 Given two strings s and t , write a function to determine if t is an anagram of s.
