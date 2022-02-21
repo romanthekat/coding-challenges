@@ -37,8 +37,31 @@ class BruteforceSolution:
         return max_area
 
 
-if __name__ == '__main__':
-    s = BruteforceSolution()
+class TwoPointersSolution:
+    def maxArea(self, height: List[int]) -> int:
+        max_area = 0
 
-    assert_equal(s.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
-    assert_equal(s.maxArea([1, 1]), 1)
+        l, r = 0, len(height) - 1
+
+        while l < r:
+            max_area = max(max_area, (r - l) * min(height[l], height[r]))
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+
+        return max_area
+
+
+if __name__ == '__main__':
+    print("bruteforce")
+    bruteforce = BruteforceSolution()
+    assert_equal(bruteforce.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
+    assert_equal(bruteforce.maxArea([1, 1]), 1)
+
+    print()
+
+    print("two pointers")
+    two_pointers = BruteforceSolution()
+    assert_equal(two_pointers.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
+    assert_equal(two_pointers.maxArea([1, 1]), 1)
