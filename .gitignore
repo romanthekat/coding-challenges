@@ -25,6 +25,7 @@ hs_err_pid*
 .idea
 *.py[cod]
 *.iml
+.nova
 
 # OS specific
 .DS_Store

@@ -32,10 +32,25 @@ Constraints:
 import collections
 from typing import List
 
-from LeetCode.common import assert_equal
+from common import assert_equal
 
 
 class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        d = {}
+
+        for i, num in enumerate(nums):
+            another_num = target - num
+            if another_num in d:
+                return [d[another_num], i]
+            else:
+                d[num] = i
+
+        print("result not found")
+        return [-1, -1]
+
+
+class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         d = collections.defaultdict()
 

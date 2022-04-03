@@ -22,7 +22,7 @@ Constraints:
 
 from typing import List
 
-from LeetCode.common import assert_equal
+from common import assert_equal
 
 
 class Solution:
