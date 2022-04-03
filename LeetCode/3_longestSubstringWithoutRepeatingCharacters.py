@@ -31,6 +31,23 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         result = 0
 
+        letters = {}
+        index = 0
+
+        for i, letter in enumerate(s):
+            if letter in letters and letters[letter] >= index:
+                index = letters[letter] + 1
+
+            letters[letter] = i
+            result = max(result, i - index + 1)
+
+        return result
+
+
+class Solution2:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        result = 0
+
         memo = {}
         start_idx = 0
         for idx, c in enumerate(s):
