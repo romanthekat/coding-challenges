@@ -20,7 +20,26 @@ Constraints:
 """
 from typing import List
 
-from LeetCode.common import assert_equal
+from common import assert_equal
+
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        result = 0
+
+        left, right = 0, len(height) - 1
+
+        while left < right:
+            left_height = height[left]
+            right_height = height[right]
+            result = max(result, (right - left) * min(left_height, right_height))
+
+            if left_height < right_height:
+                left += 1
+            else:
+                right -= 1
+
+        return result
 
 
 class BruteforceSolution:
@@ -63,5 +82,12 @@ if __name__ == '__main__':
 
     print("two pointers")
     two_pointers = BruteforceSolution()
+    assert_equal(two_pointers.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
+    assert_equal(two_pointers.maxArea([1, 1]), 1)
+
+    print()
+
+    print("two pointers 2")
+    two_pointers = Solution()
     assert_equal(two_pointers.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
     assert_equal(two_pointers.maxArea([1, 1]), 1)
