@@ -42,8 +42,7 @@ class Solution:
             if char in brackets:
                 stack.append(char)
             else:
-                bracket = stack.pop() if stack else "-"
-                if brackets.get(bracket) != char:
+                if len(stack) == 0 or brackets.get(stack.pop()) != char:
                     return False
 
         return len(stack) == 0
