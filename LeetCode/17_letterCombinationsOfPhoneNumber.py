@@ -48,22 +48,18 @@ class Solution:
                    "7": "pqrs", "8": "tuv", "9": "wxyz"}
 
         result = []
-
-        self._backtracking(mapping, result, digits, 0, [])
-
+        self._backtracking(mapping, result, digits, 0, "")
         return result
 
     def _backtracking(self, mapping, result: List, digits: str, index, combination):
         if index == len(digits):
             if len(combination) > 0:
-                result.append("".join(combination))
+                result.append(combination)
             return
 
         letters = mapping[digits[index]]
         for letter in letters:
-            combination.append(letter)
-            self._backtracking(mapping, result, digits, index + 1, combination)
-            combination.pop()
+            self._backtracking(mapping, result, digits, index + 1, combination + letter)
 
 
 if __name__ == "__main__":
