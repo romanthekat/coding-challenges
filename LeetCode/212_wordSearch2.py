@@ -37,7 +37,7 @@ class SolutionTrie:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         WORD_KEY = "@"
 
-        result = set()
+        result = []
 
         max_row = len(board)
         max_col = len(board[0])
@@ -57,8 +57,10 @@ class SolutionTrie:
             letter = board[row][col]
             node = parent_node[letter]
 
-            if WORD_KEY in node:
-                result.add(node[WORD_KEY])
+            # side effect - removes word from trie if found
+            word_match = node.pop(WORD_KEY, False)
+            if word_match:
+                result.append(word_match)
 
             board[row][col] = "#"
             for delta_row, delta_col in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -72,12 +74,15 @@ class SolutionTrie:
                 _backtracking(new_row, new_col, node)
             board[row][col] = letter
 
+            if len(node) == 0:
+                parent_node.pop(letter)
+
         for row in range(max_row):
             for col in range(max_col):
                 if board[row][col] in trie:
                     _backtracking(row, col, trie)
 
-        return list(result)
+        return result
 
 
 class SolutionSimple:
