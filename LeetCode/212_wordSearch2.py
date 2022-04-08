@@ -33,7 +33,54 @@ from typing import List
 import common
 
 
-class Solution:
+class SolutionTrie:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        WORD_KEY = "@"
+
+        result = set()
+
+        max_row = len(board)
+        max_col = len(board[0])
+
+        def get_trie(words: List[str]):
+            root = {}
+            for word in words:
+                node = root
+                for letter in word:
+                    node = node.setdefault(letter, {})
+                node[WORD_KEY] = word
+            return root
+
+        trie = get_trie(words)
+
+        def _backtracking(row, col, parent_node):
+            letter = board[row][col]
+            node = parent_node[letter]
+
+            if WORD_KEY in node:
+                result.add(node[WORD_KEY])
+
+            board[row][col] = "#"
+            for delta_row, delta_col in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                new_row = row + delta_row
+                new_col = col + delta_col
+
+                if not (0 <= new_row < max_row and 0 <= new_col < max_col):
+                    continue
+                if not (board[new_row][new_col] in node):
+                    continue
+                _backtracking(new_row, new_col, node)
+            board[row][col] = letter
+
+        for row in range(max_row):
+            for col in range(max_col):
+                if board[row][col] in trie:
+                    _backtracking(row, col, trie)
+
+        return list(result)
+
+
+class SolutionSimple:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         result = set()
 
@@ -74,7 +121,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionTrie()
 
     common.assert_equal(s.findWords([["o", "a", "a", "n"],
                                      ["e", "t", "a", "e"],
