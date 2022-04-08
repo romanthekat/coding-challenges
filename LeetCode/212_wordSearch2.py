@@ -38,38 +38,38 @@ class Solution:
         result = set()
 
         words_set = set(words)
-        max_y = len(board)
-        max_x = len(board[0])
+        max_row = len(board)
+        max_col = len(board[0])
         max_word_len = len(max(words, key=lambda word: len(word)))
 
-        def _backtracking(y, x, word, used):
+        def _backtracking(row, col, word, used):
             if word in words_set:
                 result.add(word)
 
             if len(word) >= max_word_len:
                 return
 
-            candidates = []
-            for delta_y, delta_x in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                cand_y = y + delta_y
-                cand_x = x + delta_x
-                if 0 <= cand_y < max_y and 0 <= cand_x < max_x and not used[cand_y][cand_x]:
-                    candidates.append((word + board[cand_y][cand_x], (cand_y, cand_x)))
+            for delta_row, delta_col in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                new_row = row + delta_row
+                new_col = col + delta_col
+                if not (0 <= new_row < max_row and 0 <= new_col < max_col):
+                    continue
+                if used[new_row][new_col]:
+                    continue
 
-            for candidate, coor in candidates:
-                used[coor[0]][coor[1]] = True
-                _backtracking(coor[0], coor[1], candidate, used)
-                used[coor[0]][coor[1]] = False
+                used[new_row][new_col] = True
+                _backtracking(new_row, new_col, word + board[new_row][new_col], used)
+                used[new_row][new_col] = False
 
-        for y in range(max_y):
-            for x in range(max_x):
-                _backtracking(y, x, board[y][x], self._get_used(max_y, max_x, y, x))
+        for row in range(max_row):
+            for col in range(max_col):
+                _backtracking(row, col, board[row][col], self._get_used(max_row, max_col, row, col))
 
         return list(result)
 
-    def _get_used(self, max_y, max_x, y, x):
-        used = [[False for _ in range(max_x)] for _ in range(max_y)]
-        used[y][x] = True
+    def _get_used(self, max_row, max_col, row, col):
+        used = [[False for _ in range(max_col)] for _ in range(max_row)]
+        used[row][col] = True
         return used
 
 
