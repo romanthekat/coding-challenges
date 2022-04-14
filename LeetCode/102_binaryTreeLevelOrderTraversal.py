@@ -1,3 +1,7 @@
+"""
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+"""
+
 # Definition for a binary tree node.
 from typing import List
 
@@ -10,8 +14,36 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __str__(self) -> str:
+        return self.val.__str__()
+
 
 class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+
+        result = []
+
+        nodes = [root]
+        while nodes:
+            current_level = []
+            current_level_len = len(nodes)
+            result.append(current_level)
+
+            for _ in range(current_level_len):
+                node = nodes.pop(0)
+                current_level.append(node.val)
+
+                if node.left:
+                    nodes.append(node.left)
+                if node.right:
+                    nodes.append(node.right)
+
+        return result
+
+
+class Solution2:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         result = []
 
