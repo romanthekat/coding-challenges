@@ -14,7 +14,30 @@ class TreeNode:
         self.right = None
 
 
-class Solution:
+class SolutionRecurrentCleaner:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def lca(node: 'TreeNode') -> 'TreeNode':
+            if not node:
+                return None
+
+            if node == p or node == q:
+                return node
+
+            left = lca(node.left)
+            right = lca(node.right)
+
+            if left and right:
+                return node
+
+            if left:
+                return left
+            else:
+                return right
+
+        return lca(root)
+
+
+class SolutionRecurrent:
     def __init__(self):
         self.ans = None
 
@@ -37,7 +60,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionRecurrentCleaner()
 
     root = TreeNode(3)
     node5 = TreeNode(5)
