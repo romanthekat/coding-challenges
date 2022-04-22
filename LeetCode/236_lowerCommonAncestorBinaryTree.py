@@ -16,15 +16,15 @@ class TreeNode:
 
 class SolutionRecurrentCleaner:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        def lca(node: 'TreeNode') -> 'TreeNode':
+        def lca(node: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
             if not node:
                 return None
 
             if node == p or node == q:
                 return node
 
-            left = lca(node.left)
-            right = lca(node.right)
+            left = lca(node.left, p, q)
+            right = lca(node.right, p, q)
 
             if left and right:
                 return node
@@ -34,7 +34,7 @@ class SolutionRecurrentCleaner:
             else:
                 return right
 
-        return lca(root)
+        return lca(root, p, q)
 
 
 class SolutionRecurrent:
