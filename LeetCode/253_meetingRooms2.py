@@ -32,7 +32,7 @@ class Solution:
         stack = []
         for event in timeline:
             if event[1]:
-                stack.append(event)
+                stack.append(event[1])
                 result = max(result, len(stack))
             else:
                 stack.pop()
