@@ -54,7 +54,7 @@ class SolutionPriorityQueue:
         free_rooms = [intervals[0][1]]
 
         for interval in intervals[1:]:
-            if interval[1] >= free_rooms[0]:
+            if interval[0] >= free_rooms[0]:
                 heapq.heappop(free_rooms)
 
             heapq.heappush(free_rooms, interval[1])
@@ -84,6 +84,7 @@ class SolutionOriginal:
 
 
 if __name__ == '__main__':
-    s = SolutionOrdering()
+    s = SolutionPriorityQueue()
     common.assert_equal(s.minMeetingRooms([[0, 30], [5, 10], [15, 20]]), 2)
     common.assert_equal(s.minMeetingRooms([[7, 10], [2, 4]]), 1)
+    common.assert_equal(s.minMeetingRooms([[5, 8], [6, 8]]), 2)
