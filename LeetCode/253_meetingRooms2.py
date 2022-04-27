@@ -20,7 +20,34 @@ from typing import List
 import common
 
 
-class SolutionOrderedQueue:
+class SolutionOrdering:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        starts = []
+        ends = []
+
+        for interval in intervals:
+            starts.append(interval[0])
+            ends.append(interval[1])
+
+        starts.sort()
+        ends.sort()
+
+        start_idx = 0
+        end_idx = 0
+
+        result = 0
+        while start_idx < len(intervals):
+            if starts[start_idx] >= ends[end_idx]:
+                result -= 1
+                end_idx += 1
+
+            result += 1
+            start_idx += 1
+
+        return result
+
+
+class SolutionPriorityQueue:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         intervals.sort(key=lambda x: x[0])
 
@@ -57,6 +84,6 @@ class SolutionOriginal:
 
 
 if __name__ == '__main__':
-    s = SolutionOrderedQueue()
+    s = SolutionOrdering()
     common.assert_equal(s.minMeetingRooms([[0, 30], [5, 10], [15, 20]]), 2)
     common.assert_equal(s.minMeetingRooms([[7, 10], [2, 4]]), 1)
