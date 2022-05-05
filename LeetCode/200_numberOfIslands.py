@@ -55,7 +55,7 @@ class UnionFind:
             self.count -= 1
 
 
-class SolutionUnionFind:
+class SolutionUnionFindSimple:
     def numIslands(self, grid: List[List[str]]) -> int:
         union = UnionFind(grid)
 
@@ -136,7 +136,7 @@ class SolutionOrig:
 
 
 if __name__ == '__main__':
-    s = SolutionUnionFind()
+    s = SolutionUnionFindSimple()
     common.assert_equal(s.numIslands([["1", "1", "1", "1", "0"],
                                       ["1", "1", "0", "1", "0"],
                                       ["1", "1", "0", "0", "0"],
