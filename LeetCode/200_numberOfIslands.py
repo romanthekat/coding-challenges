@@ -34,7 +34,7 @@ import common
 
 class UnionFind:
     def __init__(self, grid) -> None:
-        self.parents = []
+        self.parents = [[None for _ in row] for row in grid]
         self.count = 0
 
         for row in range(len(grid)):
@@ -42,9 +42,7 @@ class UnionFind:
             for col in range(len(grid[0])):
                 if grid[row][col] == '1':
                     self.count += 1
-                    self.parents[row].append((row, col))
-                else:
-                    self.parents[row].append((-1, -1))
+                    self.parents[row][col] = (row, col)
 
     def find(self, row, col) -> set:
         return self.parents[row][col]
