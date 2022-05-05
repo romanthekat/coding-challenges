@@ -32,6 +32,54 @@ from typing import List
 import common
 
 
+class UnionFind:
+    def __init__(self, grid) -> None:
+        self.parents = []
+        self.count = 0
+
+        for row in range(len(grid)):
+            self.parents.append([])
+            for col in range(len(grid[0])):
+                if grid[row][col] == '1':
+                    self.count += 1
+                    self.parents[row].append((row, col))
+                else:
+                    self.parents[row].append((-1, -1))
+
+    def find(self, row, col) -> set:
+        return self.parents[row][col]
+
+    def union(self, row_a, col_a, row_b, col_b):
+        root_a = self.find(row_a, col_a)
+        root_b = self.find(row_b, col_b)
+        if root_a != root_b:
+            self.parents[row_b][col_b] = root_a
+            self.count -= 1
+
+
+class SolutionUnionFind:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        union = UnionFind(grid)
+
+        max_row = len(grid)
+        max_col = len(grid[0])
+        for row in range(max_row):
+            for col in range(max_col):
+                if grid[row][col] == '0':
+                    continue
+
+                grid[row][col] = '0'
+
+                for delta_row, delta_col in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    target_row = row + delta_row
+                    target_col = col + delta_col
+
+                    if 0 <= target_row < max_row and 0 <= target_col < max_col and grid[target_row][target_col] == '1':
+                        union.union(row, col, target_row, target_col)
+
+        return union.count
+
+
 class SolutionDfs:
     def numIslands(self, grid: List[List[str]]) -> int:
         result = 0
@@ -90,12 +138,13 @@ class SolutionOrig:
 
 
 if __name__ == '__main__':
-    s = SolutionDfs()
-    #common.assert_equal(s.numIslands([["1", "1", "1", "1", "0"],
-    #                                  ["1", "1", "0", "1", "0"],
-    #                                  ["1", "1", "0", "0", "0"],
-    #                                  ["0", "0", "0", "0", "0"]]),
-    #                    1)
+    s = SolutionUnionFind()
+    common.assert_equal(s.numIslands([["1", "1", "1", "1", "0"],
+                                      ["1", "1", "0", "1", "0"],
+                                      ["1", "1", "0", "0", "0"],
+                                      ["0", "0", "0", "0", "0"]]),
+                        1)
+
     common.assert_equal(s.numIslands([["1", "1", "0", "0", "0"],
                                       ["1", "1", "0", "0", "0"],
                                       ["0", "0", "1", "0", "0"],
