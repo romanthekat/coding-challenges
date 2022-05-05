@@ -32,7 +32,34 @@ from typing import List
 import common
 
 
-class Solution:
+class SolutionDfs:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        result = 0
+
+        max_row = len(grid)
+        max_col = len(grid[0])
+
+        def dfs(row, col):
+            if row < 0 or col < 0 or row >= max_row or col >= max_col or grid[row][col] == '0':
+                return
+
+            grid[row][col] = '0'
+
+            dfs(row - 1, col)
+            dfs(row + 1, col)
+            dfs(row, col - 1)
+            dfs(row, col + 1)
+
+        for row in range(max_row):
+            for col in range(max_col):
+                if grid[row][col] == '1':
+                    result += 1
+                    dfs(row, col)
+
+        return result
+
+
+class SolutionOrig:
     def numIslands(self, grid: List[List[str]]) -> int:
         result = 0
 
@@ -63,12 +90,12 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
-    common.assert_equal(s.numIslands([["1", "1", "1", "1", "0"],
-                                      ["1", "1", "0", "1", "0"],
-                                      ["1", "1", "0", "0", "0"],
-                                      ["0", "0", "0", "0", "0"]]),
-                        1)
+    s = SolutionDfs()
+    #common.assert_equal(s.numIslands([["1", "1", "1", "1", "0"],
+    #                                  ["1", "1", "0", "1", "0"],
+    #                                  ["1", "1", "0", "0", "0"],
+    #                                  ["0", "0", "0", "0", "0"]]),
+    #                    1)
     common.assert_equal(s.numIslands([["1", "1", "0", "0", "0"],
                                       ["1", "1", "0", "0", "0"],
                                       ["0", "0", "1", "0", "0"],
