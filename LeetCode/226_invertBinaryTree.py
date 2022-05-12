@@ -18,7 +18,7 @@ Constraints:
     The number of nodes in the tree is in the range [0, 100].
     -100 <= Node.val <= 100
 """
-
+import collections
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -32,7 +32,26 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class SolutionIterative:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+
+        queue = collections.deque([root])
+        while queue:
+            node = queue.popleft()
+            node.left, node.right = node.right, node.left
+
+            if node.left:
+                queue.append(node.left)
+
+            if node.right:
+                queue.append(node.right)
+
+        return root
+
+
+class SolutionRecursive:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
             return
@@ -45,7 +64,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionIterative()
 
     node4 = TreeNode(4)
 
