@@ -22,8 +22,17 @@ from typing import List
 
 import common
 
+class SolutionGroup4:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+        for row in range(n//2):
+            for col in range(row, n-row-1):
+                matrix[row][col], matrix[col][n-1-row] = matrix[col][n-1-row], matrix[row][col]
+                matrix[row][col], matrix[n-1-row][n-1-col] = matrix[n-1-row][n-1-col], matrix[row][col]
+                matrix[row][col], matrix[n-1-col][row] = matrix[n-1-col][row], matrix[row][col]
 
-class Solution:
+
+class SolutionAlgebra:
     def _transpose(self, matrix: List[List[int]]):
         n = len(matrix)
 
@@ -43,7 +52,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
+    s = SolutionGroup4()
     matrix_1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     s.rotate(matrix_1)
     common.assert_equal(matrix_1, [[7, 4, 1], [8, 5, 2], [9, 6, 3]])
