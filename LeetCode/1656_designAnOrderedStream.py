@@ -42,11 +42,9 @@ import common
 
 
 class OrderedStream:
-    stream = None
-    ptr = 0
-
     def __init__(self, n: int):
         self.stream = [None for _ in range(n)]
+        self.ptr = 0
 
     def insert(self, idKey: int, value: str) -> List[str]:
         result = []
