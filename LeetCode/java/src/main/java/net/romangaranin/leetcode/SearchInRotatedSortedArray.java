@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode;
+package net.romangaranin.leetcode;
 
 import static dev.romangaranin.leetcode.Helper.test;
 

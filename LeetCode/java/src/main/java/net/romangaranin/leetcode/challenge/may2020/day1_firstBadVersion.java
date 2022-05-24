@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode.challenge.may2020;
+package net.romangaranin.leetcode.challenge.may2020;
 
 /**
  * == day 1: First Bad Version

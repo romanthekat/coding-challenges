@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode;
+package net.romangaranin.leetcode;
 
 import dev.romangaranin.leetcode.Helper.ListNode;
 

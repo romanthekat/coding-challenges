@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
 import static dev.romangaranin.leetcode.Helper.*;
 

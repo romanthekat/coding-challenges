@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode.challenge.may2020;
+package net.romangaranin.leetcode.challenge.may2020;
 
 import java.util.HashSet;
 import java.util.Set;

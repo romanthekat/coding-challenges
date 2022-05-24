@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode.exp;
+package net.romangaranin.leetcode.exp;
 
 //Fibonacci summ of two prev
 //0 0
