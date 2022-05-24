@@ -1,6 +1,6 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import net.romangaranin.leetcode.Helper;
 
 /**
  * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
@@ -18,9 +18,9 @@ import static dev.romangaranin.leetcode.Helper.test;
 public class MaximumSubarray {
     public static void main(String[] args) {
         var s = new Solution();
-        test(s.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}), 6);
-        test(s.maxSubArray(new int[]{1}), 1);
-        test(s.maxSubArray(new int[]{5, 4, -1, 7, 8}), 23);
+        Helper.test(s.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}), 6);
+        Helper.test(s.maxSubArray(new int[]{1}), 1);
+        Helper.test(s.maxSubArray(new int[]{5, 4, -1, 7, 8}), 23);
     }
 
     static class Solution {

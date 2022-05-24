@@ -1,8 +1,8 @@
-package dev.romangaranin.leetcode.top.medium;
+package net.romangaranin.leetcode.top.medium;
+
+import net.romangaranin.leetcode.Helper;
 
 import java.util.HashMap;
-
-import static dev.romangaranin.leetcode.Helper.test;
 
 /**
  * Given a string s, find the length of the longest substring without repeating characters.
@@ -17,14 +17,14 @@ public class LongestSubstringWithoutRepeatingChars {
     public static void main(String[] args) {
         var s = new Solution();
 
-        test(s.lengthOfLongestSubstring("abcabcbb"), 3);
-        test(s.lengthOfLongestSubstring("bbbbb"), 1);
-        test(s.lengthOfLongestSubstring("pwwkew"), 3);
-        test(s.lengthOfLongestSubstring(""), 0);
-        test(s.lengthOfLongestSubstring("aab"), 2);
-        test(s.lengthOfLongestSubstring("dvdf"), 3);
-        test(s.lengthOfLongestSubstring("bbtablud"), 6);
-        test(s.lengthOfLongestSubstring("abba"), 2);
+        Helper.test(s.lengthOfLongestSubstring("abcabcbb"), 3);
+        Helper.test(s.lengthOfLongestSubstring("bbbbb"), 1);
+        Helper.test(s.lengthOfLongestSubstring("pwwkew"), 3);
+        Helper.test(s.lengthOfLongestSubstring(""), 0);
+        Helper.test(s.lengthOfLongestSubstring("aab"), 2);
+        Helper.test(s.lengthOfLongestSubstring("dvdf"), 3);
+        Helper.test(s.lengthOfLongestSubstring("bbtablud"), 6);
+        Helper.test(s.lengthOfLongestSubstring("abba"), 2);
     }
 
     static class Solution {

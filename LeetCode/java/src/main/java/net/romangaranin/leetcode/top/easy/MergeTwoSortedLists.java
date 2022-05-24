@@ -1,6 +1,6 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.*;
+import static net.romangaranin.leetcode.Helper.*;
 
 /**
  * Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.

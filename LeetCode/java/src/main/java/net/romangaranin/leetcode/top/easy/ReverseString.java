@@ -1,7 +1,7 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
 
-import static dev.romangaranin.leetcode.Helper.testCharArrays;
+import net.romangaranin.leetcode.Helper;
 
 /**
  * Write a function that reverses a string. The input string is given as an array of characters s.
@@ -15,23 +15,23 @@ public class ReverseString {
 
         var inputOdd = new char[]{'h', 'e', 'l', 'l', 'o'};
         s.reverseString(inputOdd);
-        testCharArrays(inputOdd, new char[]{'o', 'l', 'l', 'e', 'h'});
+        Helper.testCharArrays(inputOdd, new char[]{'o', 'l', 'l', 'e', 'h'});
 
         var inputEven = new char[]{'h', 'e', 'l', 'l'};
         s.reverseString(inputEven);
-        testCharArrays(inputEven, new char[]{'l', 'l', 'e', 'h'});
+        Helper.testCharArrays(inputEven, new char[]{'l', 'l', 'e', 'h'});
 
         var input0 = new char[]{};
         s.reverseString(input0);
-        testCharArrays(input0, new char[]{});
+        Helper.testCharArrays(input0, new char[]{});
 
         var input1 = new char[]{'h'};
         s.reverseString(input1);
-        testCharArrays(input1, new char[]{'h'});
+        Helper.testCharArrays(input1, new char[]{'h'});
 
         var input2 = new char[]{'h', 'e'};
         s.reverseString(input2);
-        testCharArrays(input2, new char[]{'e', 'h'});
+        Helper.testCharArrays(input2, new char[]{'e', 'h'});
     }
 
     static class Solution {

@@ -1,6 +1,6 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import net.romangaranin.leetcode.Helper;
 
 /**
  * You are given an array prices where prices[i] is the price of a given stock on the ith day.
@@ -16,9 +16,9 @@ import static dev.romangaranin.leetcode.Helper.test;
 public class BestTimeToBuySellStock {
     public static void main(String[] args) {
         var s = new Solution();
-        test(s.maxProfit(new int[]{7, 1, 5, 3, 6, 4}), 5);
-        test(s.maxProfit(new int[]{7, 6, 4, 3, 1}), 0);
-        test(s.maxProfit(new int[]{5, 3, 5, 2, 6}), 4);
+        Helper.test(s.maxProfit(new int[]{7, 1, 5, 3, 6, 4}), 5);
+        Helper.test(s.maxProfit(new int[]{7, 6, 4, 3, 1}), 0);
+        Helper.test(s.maxProfit(new int[]{5, 3, 5, 2, 6}), 4);
     }
 
     static class Solution {

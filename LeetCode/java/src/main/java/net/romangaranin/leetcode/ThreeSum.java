@@ -1,10 +1,8 @@
 package net.romangaranin.leetcode;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 import static java.util.List.of;
 
 /**

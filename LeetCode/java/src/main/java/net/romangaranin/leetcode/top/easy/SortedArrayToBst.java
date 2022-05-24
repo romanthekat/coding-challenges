@@ -1,8 +1,8 @@
 package net.romangaranin.leetcode.top.easy;
 
-import dev.romangaranin.leetcode.Helper.TreeNode;
+import net.romangaranin.leetcode.Helper.TreeNode;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.

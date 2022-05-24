@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode;
+package net.romangaranin.leetcode;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

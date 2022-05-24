@@ -1,7 +1,7 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.TreeNode;
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.TreeNode;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given the root of a binary tree, return its maximum depth.

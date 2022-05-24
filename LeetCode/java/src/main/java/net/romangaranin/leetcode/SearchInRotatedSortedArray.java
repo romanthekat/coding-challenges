@@ -1,6 +1,6 @@
 package net.romangaranin.leetcode;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.

@@ -3,7 +3,7 @@ package net.romangaranin.leetcode.top.easy;
 import java.util.ArrayList;
 import java.util.List;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.

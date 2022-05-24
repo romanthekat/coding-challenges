@@ -1,11 +1,8 @@
-package dev.romangaranin.leetcode;
+package net.romangaranin.leetcode;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 import static java.util.List.of;
 
 public class RemoveNthNodeFromLinkedList {

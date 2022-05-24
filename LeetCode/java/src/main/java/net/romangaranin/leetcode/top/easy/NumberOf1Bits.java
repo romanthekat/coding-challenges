@@ -1,6 +1,6 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).

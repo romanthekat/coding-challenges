@@ -1,7 +1,6 @@
 package net.romangaranin.leetcode;
 
-import static dev.romangaranin.leetcode.Helper.test;
-import static dev.romangaranin.leetcode.Helper.testArrays;
+import static net.romangaranin.leetcode.Helper.testArrays;
 
 /**
  * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.

@@ -1,8 +1,8 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
 import java.util.HashMap;
 
-import static dev.romangaranin.leetcode.Helper.testArrays;
+import static net.romangaranin.leetcode.Helper.testArrays;
 
 /**
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.

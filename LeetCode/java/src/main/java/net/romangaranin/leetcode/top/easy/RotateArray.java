@@ -1,6 +1,6 @@
 package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.testArrays;
+import static net.romangaranin.leetcode.Helper.testArrays;
 
 /**
  * Given an array, rotate the array to the right by k steps, where k is non-negative.

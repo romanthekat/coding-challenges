@@ -1,6 +1,6 @@
 package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.*;
+import static net.romangaranin.leetcode.Helper.*;
 
 /**
  * Given the head of a singly linked list, reverse the list, and return the reversed list.

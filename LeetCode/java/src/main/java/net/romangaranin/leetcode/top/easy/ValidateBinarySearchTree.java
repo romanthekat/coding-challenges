@@ -1,8 +1,8 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
-import dev.romangaranin.leetcode.Helper.TreeNode;
+import net.romangaranin.leetcode.Helper.TreeNode;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given the root of a binary tree, determine if it is a valid binary search tree (BST).

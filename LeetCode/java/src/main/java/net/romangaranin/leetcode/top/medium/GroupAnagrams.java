@@ -1,11 +1,11 @@
-package dev.romangaranin.leetcode.top.medium;
+package net.romangaranin.leetcode.top.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given an array of strings strs, group the anagrams together. You can return the answer in any order.

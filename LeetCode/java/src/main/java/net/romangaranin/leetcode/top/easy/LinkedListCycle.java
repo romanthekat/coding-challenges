@@ -1,9 +1,9 @@
 package net.romangaranin.leetcode.top.easy;
 
-import dev.romangaranin.leetcode.Helper.ListNode;
+import net.romangaranin.leetcode.Helper.ListNode;
 
-import static dev.romangaranin.leetcode.Helper.newLinkedList;
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.newLinkedList;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given head, the head of a linked list, determine if the linked list has a cycle in it.

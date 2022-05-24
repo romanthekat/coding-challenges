@@ -1,7 +1,6 @@
 package net.romangaranin.leetcode;
 
-import static dev.romangaranin.leetcode.Helper.test2dArrays;
-import static dev.romangaranin.leetcode.Helper.testArrays;
+import static net.romangaranin.leetcode.Helper.test2dArrays;
 
 /**
  * You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).

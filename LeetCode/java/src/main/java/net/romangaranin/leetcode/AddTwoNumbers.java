@@ -1,8 +1,8 @@
 package net.romangaranin.leetcode;
 
-import dev.romangaranin.leetcode.Helper.ListNode;
+import net.romangaranin.leetcode.Helper.ListNode;
 
-import static dev.romangaranin.leetcode.Helper.newLinkedList;
+import static net.romangaranin.leetcode.Helper.newLinkedList;
 
 /**
  * https://leetcode.com/problems/add-two-numbers/

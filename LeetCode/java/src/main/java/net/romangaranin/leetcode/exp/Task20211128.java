@@ -1,4 +1,4 @@
-package dev.romangaranin.leetcode.exp;
+package net.romangaranin.leetcode.exp;
 
 import java.util.Arrays;
 import java.util.Comparator;

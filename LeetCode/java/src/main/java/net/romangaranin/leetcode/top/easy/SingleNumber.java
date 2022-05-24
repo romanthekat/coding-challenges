@@ -1,8 +1,8 @@
-package dev.romangaranin.leetcode.top.easy;
+package net.romangaranin.leetcode.top.easy;
 
 import java.util.Arrays;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.

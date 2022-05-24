@@ -1,6 +1,6 @@
 package net.romangaranin.leetcode.top.easy;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Implement [strStr()](https://www.cplusplus.com/reference/cstring/strstr/).

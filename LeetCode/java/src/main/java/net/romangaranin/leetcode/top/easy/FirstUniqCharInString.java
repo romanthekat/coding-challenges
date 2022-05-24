@@ -2,7 +2,7 @@ package net.romangaranin.leetcode.top.easy;
 
 import java.util.HashMap;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.

@@ -1,6 +1,6 @@
-package dev.romangaranin.leetcode.top.medium;
+package net.romangaranin.leetcode.top.medium;
 
-import static dev.romangaranin.leetcode.Helper.test;
+import static net.romangaranin.leetcode.Helper.test;
 
 /**
  * Given a string s, return the longest palindromic substring in s.
